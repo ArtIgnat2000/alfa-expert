@@ -19,16 +19,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+
+      # Определяем адрес сайта до сборки
       - name: Configure Pages
         id: pages
         uses: actions/configure-pages@v5
+
+      # Пересобираем страницы, подставляя реальный адрес
+      # в canonical, sitemap.xml и разметку Schema.org
       - name: Build pages
         env:
           SITE_URL: ${{ steps.pages.outputs.base_url }}
         run: python3 build.py
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .
