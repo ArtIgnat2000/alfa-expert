@@ -106,6 +106,11 @@ li{margin-bottom:.4em}
 .topbar__in{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:38px;flex-wrap:wrap}
 .topbar a{color:#cfc9bd}
 .topbar__list{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+.topbar__phone{display:inline-flex;align-items:center;gap:8px;text-decoration:none!important;padding:4px 0}
+.topbar__phone svg{flex-shrink:0}
+.topbar__phone-label{color:#8d8880}
+.topbar__phone b{color:#EDEBE6;font-size:15px;letter-spacing:.01em}
+.topbar__phone:hover b{color:var(--gold-bright)}
 
 .header{position:sticky;top:0;z-index:1000;background:var(--black);border-bottom:1px solid #2a2a2a}
 .header__in{display:flex;align-items:center;gap:28px;min-height:var(--header-h)}
@@ -425,28 +430,117 @@ table.price td.num{white-space:nowrap;font-weight:600}
   .stats__grid{grid-template-columns:repeat(2,1fr)}
 }
 @media (max-width:760px){
-  body{font-size:16.5px}
-  .section{padding:56px 0}
+  :root{--header-h:72px}
+  body{font-size:17px;padding-bottom:78px}
+  .section{padding:46px 0}
+  .section--tight{padding:38px 0}
   .container{padding:0 18px}
+  .grid{gap:16px}
   .grid--2,.grid--3,.grid--4{grid-template-columns:1fr}
   .situations{grid-template-columns:1fr}
   .form__row{grid-template-columns:1fr}
-  .topbar__in{font-size:13px;min-height:34px;justify-content:center}
-  .topbar__list{gap:14px}
+
+  /* Верхняя полоса: телефон с подписью, крупно и во всю ширину */
+  .topbar__in{min-height:0;justify-content:center;padding:0}
+  .topbar__list{gap:0;width:100%}
+  .topbar__list:first-child{display:none}
   .topbar__hide-sm{display:none}
-  .mobile-bar{display:flex}
-  body{padding-bottom:74px}
-  .hero{padding:52px 0 46px}
-  .hero__actions .btn{width:100%}
-  .form{padding:22px}
-  .cta-band__in{flex-direction:column;align-items:flex-start}
-  .cta-band__actions{width:100%}
-  .cta-band__actions .btn{flex:1}
-  .footer__grid{grid-template-columns:1fr;gap:26px}
-  .steps{grid-template-columns:1fr}
-  .brand__logo{height:44px}
+  .topbar__phone{
+    width:100%;justify-content:center;gap:9px;padding:11px 8px;
+    background:rgba(184,148,77,.10);border-bottom:1px solid rgba(184,148,77,.22);
+  }
+  .topbar__phone-label{font-size:14px;color:#a9a49b}
+  .topbar__phone b{font-size:17px;color:#fff}
+
+  /* Шапка: крупнее логотип, комфортная кнопка меню */
+  .header__in{gap:12px;min-height:var(--header-h)}
+  .brand{gap:11px}
+  .brand__logo{height:52px}
+  .brand__name{font-size:21px;letter-spacing:.05em}
+  .brand__tag{display:block;font-size:10px;letter-spacing:.07em}
+  .burger{width:50px;height:48px}
+
+  /* Первый экран */
+  .hero{padding:38px 0 42px}
+  .hero h1{font-size:31px;line-height:1.2}
+  .hero__lead{font-size:17.5px;margin-bottom:12px}
+  .hero__sub{font-size:16px;margin-bottom:24px}
+  .hero__actions{gap:11px;margin-bottom:26px}
+  .hero__actions .btn{width:100%;padding:17px 20px;font-size:16.5px}
+  .hero__facts{gap:16px;padding-top:20px}
+  .hero__fact{max-width:100%;width:100%;font-size:15px}
+  .hero__card{padding:22px 18px}
+
+  /* Заголовки и отступы */
+  h1{font-size:30px}
+  h2{font-size:25px}
+  h3{font-size:20px}
+  .section-head{margin-bottom:28px}
+  .section-head p{font-size:16.5px}
+  .page-hero{padding:34px 0 38px}
+  .page-hero p{font-size:17px}
+
+  /* Карточки и списки */
+  .card{padding:22px 20px}
+  .situation{padding:18px 16px;font-size:16.5px}
+  .stats__grid{grid-template-columns:1fr 1fr}
+  .stat{padding:22px 14px}
+  .stat__num{font-size:29px}
+  .stat__label{font-size:13.5px}
+  .steps{grid-template-columns:1fr;gap:18px}
+  .step{padding-top:18px}
+  .step__num{font-size:36px;margin-bottom:8px}
+  .expert__photo{aspect-ratio:3/2}
+  .case{padding:22px 20px}
+
+  /* Формы: не зумит iOS при фокусе (нужно ровно 16px) */
+  .form{padding:20px 18px}
+  .field input,.field select,.field textarea{font-size:16px;padding:14px}
+  .field label{font-size:15px}
+  .consent{font-size:14.5px;gap:12px}
+  .consent input{width:22px;height:22px}
+  .btn{padding:16px 22px}
+
+  /* FAQ: увеличенная зона нажатия */
+  .faq summary{padding:20px 40px 20px 0;font-size:18px}
+  .faq__body{font-size:16.5px;padding-right:0}
+
+  /* Таблица цен -> карточки, без горизонтальной прокрутки */
+  .table-wrap{border:0;background:transparent;overflow:visible}
+  table.price{min-width:0;display:block;font-size:16px}
+  table.price thead{display:none}
+  table.price tbody,table.price tr,table.price td{display:block;width:100%}
+  table.price tr{
+    background:var(--bg-2);border:1px solid var(--line);border-left:3px solid var(--gold);
+    border-radius:var(--radius);padding:16px 18px;margin-bottom:12px;
+  }
+  table.price td{border:0;padding:3px 0}
+  table.price td:first-child{font-family:var(--font-head);font-weight:700;font-size:18px;margin-bottom:6px}
+  table.price td[data-l]::before{content:attr(data-l) ": ";color:#8a6c2f;font-weight:600}
+
+  .cta-band{padding:44px 0}
+  .cta-band__in{flex-direction:column;align-items:stretch;gap:22px}
+  .cta-band__actions{width:100%;flex-direction:column}
+  .cta-band__actions .btn{width:100%}
+
+  .split{gap:28px}
+  .footer{padding:40px 0 0}
+  .footer__grid{grid-template-columns:1fr;gap:24px;padding-bottom:28px}
+  .footer__bottom{flex-direction:column;gap:10px}
+
+  /* Нижняя панель */
+  .mobile-bar{display:flex;padding:9px 12px calc(9px + env(safe-area-inset-bottom))}
+  .mobile-bar .btn{padding:15px 8px;font-size:16px}
+  .mobile-bar .btn--icon{flex:0 0 56px}
+}
+
+@media (max-width:400px){
+  .hero h1{font-size:28px}
+  h2{font-size:23px}
+  .brand__logo{height:46px}
   .brand__name{font-size:19px}
-  :root{--header-h:66px}
+  .topbar__phone-label{display:none}
+  .stats__grid{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
