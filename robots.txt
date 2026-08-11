@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://alfa-expert.ru/sitemap.xml
