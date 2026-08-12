@@ -336,9 +336,9 @@ def header(base, active):
     </button>
     <nav class="nav" id="mainnav" aria-label="Основное меню">
       {nav_items}
-      <a class="btn btn--primary btn--sm" href="{base}kontakty.html#zayavka">Связаться с экспертом</a>
+      <a class="btn btn--primary btn--sm" href="tel:{ORG['phone_href']}">Позвонить эксперту</a>
     </nav>
-    <a class="btn btn--primary btn--sm header__cta" href="{base}kontakty.html#zayavka">Связаться с экспертом</a>
+    <a class="btn btn--primary btn--sm header__cta" href="tel:{ORG['phone_href']}">Позвонить эксперту</a>
   </div>
 </header>
 """
@@ -353,8 +353,8 @@ def cta_band(base, title="Опишите ситуацию — свяжемся �
       <p>{text}</p>
     </div>
     <div class="cta-band__actions">
-      <a class="btn btn--primary" href="{base}kontakty.html#zayavka">Связаться с экспертом</a>
-      <a class="btn btn--ghost" href="tel:{ORG['phone_href']}">{ORG['phone_display']}</a>
+      <a class="btn btn--primary" href="tel:{ORG['phone_href']}">Позвонить эксперту</a>
+      <a class="btn btn--ghost" href="{base}kontakty.html#zayavka">Связаться с экспертом</a>
     </div>
   </div>
 </section>
@@ -412,7 +412,7 @@ def footer(base):
 def mobile_bar(base):
     return f"""
 <div class="mobile-bar">
-  <a class="btn btn--primary" href="{base}kontakty.html#zayavka">Связаться с экспертом</a>
+  <a class="btn btn--primary" href="tel:{ORG['phone_href']}">Позвонить эксперту</a>
   <a class="btn btn--ghost btn--icon" href="{WA}" target="_blank" rel="noopener" aria-label="Написать в WhatsApp">{ico(I['wa'],20,'#F3E2A8')}</a>
 </div>
 """
@@ -594,8 +594,8 @@ def build_index():
       <p class="hero__lead">Объективные исследования для судов, юристов, организаций и частных лиц.</p>
       <p class="hero__sub">Помогаем установить фактические обстоятельства спора, оценить ущерб, выявить недостатки и подготовить экспертное заключение на основании документов и исследований.</p>
       <div class="hero__actions">
-        <a class="btn btn--primary" href="#zayavka">Связаться с экспертом</a>
-        <a class="btn btn--ghost" href="tel:{ORG['phone_href']}">Позвонить эксперту</a>
+        <a class="btn btn--primary" href="tel:{ORG['phone_href']}">Позвонить эксперту</a>
+        <a class="btn btn--ghost" href="#zayavka">Связаться с экспертом</a>
       </div>
       <div class="hero__facts">
         <div class="hero__fact">{ico(I['pin'],20,'#E0B84A')}<span><b>{ORG['region']}</b>выезд в другие регионы</span></div>
@@ -875,8 +875,8 @@ def build_services():
           <li><b>Регион:</b> <span>{ORG['region']}, выезд в регионы</span></li>
         </ul>
         <p style="font-size:14.5px">Итоговая стоимость зависит от количества объектов, числа вопросов и необходимости выезда. Согласуем после изучения материалов.</p>
-        <a class="btn btn--primary btn--wide" href="../kontakty.html#zayavka">Связаться с экспертом</a>
-        <a class="btn btn--outline btn--wide" style="margin-top:10px" href="tel:{ORG['phone_href']}">{ORG['phone_display']}</a>
+        <a class="btn btn--primary btn--wide" href="tel:{ORG['phone_href']}">Позвонить эксперту</a>
+        <a class="btn btn--outline btn--wide" style="margin-top:10px" href="../kontakty.html#zayavka">Связаться с экспертом</a>
       </div>
       <div class="card" style="margin-top:22px">
         <h3 style="font-size:18px">Другие направления</h3>
@@ -1038,11 +1038,11 @@ def build_lawyers():
         <li>соответствия компетенции эксперта (вопросы права экспертом не решаются)</li>
         <li>технической разрешимости при имеющихся материалах</li>
         <li>полноты — чтобы выводы охватывали предмет доказывания</li>
-        <li>однозначности формулировок, исключаюѺлючающей двойное толкование</li>
+        <li>однозначности формулировок, исключающей двойное толкование</li>
       </ul>
 
       <h2 style="margin-top:44px">Рецензия на заключение оппонента</h2>
-      <p>Проводим научно-методический анализ заключения: проверяем соблюдение требований Федерального закона № 73-ФЗ, применённые методики, полноту исследования, наличие расчётных и логических ошибок. Результат используется для обоснования ходатайства о назначении повторной или дополнительной экспертизы.</p>
+      <p>Проводим научно-методический анализ заключения: проверяем соблюдение требований Федерального закона № 73-ФЗ, применённые методики, полноту исследования, наличие расчётных и логических ошибок. Результат используется для обоснова�основания ходатайства о назначении повторной или дополнительной экспертизы.</p>
       <p><a class="link-arrow" href="uslugi/recenzirovanie.html">Подробнее о рецензировании</a></p>
 
       <h2 style="margin-top:44px">Участие эксперта в заседании</h2>
