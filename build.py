@@ -42,7 +42,7 @@ TG = "https://t.me/"  # ЗАМЕНИТЬ на реальный аккаунт
 # ────────────────────────────────────────────────────────────────
 #  SVG-иконки (без внешних файлов, чтобы работал офлайн-предпросмотр)
 # ────────────────────────────────────────────────────────────────
-def ico(path, size=24, color="#B8944D", sw=1.5):
+def ico(path, size=24, color="#E0B84A", sw=1.5):
     return (f'<svg width="{size}" height="{size}" viewBox="0 0 24 24" fill="none" '
             f'stroke="{color}" stroke-width="{sw}" stroke-linecap="round" '
             f'stroke-linejoin="round" aria-hidden="true">{path}</svg>')
@@ -310,7 +310,7 @@ def header(base, active):
     <div class="topbar__list">
       <a href="mailto:{ORG['email']}" class="topbar__hide-sm">{ORG['email']}</a>
       <a class="topbar__phone" href="tel:{ORG['phone_href']}">
-        {ico(I['phone'],17,'#D6B36A',1.8)}
+        {ico(I['phone'],17,'#F0C85A',1.8)}
         <span class="topbar__phone-label">Консультация эксперта:</span>
         <b>{ORG['phone_display']}</b>
       </a>
@@ -328,7 +328,7 @@ def header(base, active):
       </span>
     </a>
     <a class="header__phone" href="tel:{ORG['phone_href']}" aria-label="Позвонить по номеру {ORG['phone_display']}">
-      {ico(I['phone'],20,'#D6B36A',1.9)}
+      {ico(I['phone'],20,'#F0C85A',1.9)}
       <span class="header__phone-num">{ORG['phone_display']}</span>
     </a>
     <button class="burger" type="button" aria-expanded="false" aria-controls="mainnav" aria-label="Открыть меню">
@@ -413,7 +413,7 @@ def mobile_bar(base):
     return f"""
 <div class="mobile-bar">
   <a class="btn btn--primary" href="{base}kontakty.html#zayavka">Связаться с экспертом</a>
-  <a class="btn btn--ghost btn--icon" href="{WA}" target="_blank" rel="noopener" aria-label="Написать в WhatsApp">{ico(I['wa'],20,'#E8D7AD')}</a>
+  <a class="btn btn--ghost btn--icon" href="{WA}" target="_blank" rel="noopener" aria-label="Написать в WhatsApp">{ico(I['wa'],20,'#F3E2A8')}</a>
 </div>
 """
 
@@ -545,7 +545,7 @@ def build_index():
       ("search","Честный разбор задачи","Если экспертиза не решает вашу задачу или материалов недостаточно — скажем об этом сразу, до заключения договора."),
     ]
     trust_html = "".join(f"""<article class="card card--dark">
-      <div class="card__icon">{ico(I[k],26,'#D6B36A')}</div><h3>{t}</h3><p>{d}</p></article>""" for k,t,d in trust)
+      <div class="card__icon">{ico(I[k],26,'#F0C85A')}</div><h3>{t}</h3><p>{d}</p></article>""" for k,t,d in trust)
 
     experts_html = ""
     for e in EXPERTS[:4]:
@@ -598,9 +598,9 @@ def build_index():
         <a class="btn btn--ghost" href="tel:{ORG['phone_href']}">Позвонить эксперту</a>
       </div>
       <div class="hero__facts">
-        <div class="hero__fact">{ico(I['pin'],20,'#B8944D')}<span><b>{ORG['region']}</b>выезд в другие регионы</span></div>
-        <div class="hero__fact">{ico(I['phone'],20,'#B8944D')}<span><b><a href="tel:{ORG['phone_href']}" style="color:#fff">{ORG['phone_display']}</a></b>{ORG['hours']}</span></div>
-        <div class="hero__fact">{ico(I['clock'],20,'#B8944D')}<span><b>Ответ {ORG['reply']}</b>на обращение по телефону или форме</span></div>
+        <div class="hero__fact">{ico(I['pin'],20,'#E0B84A')}<span><b>{ORG['region']}</b>выезд в другие регионы</span></div>
+        <div class="hero__fact">{ico(I['phone'],20,'#E0B84A')}<span><b><a href="tel:{ORG['phone_href']}" style="color:#fff">{ORG['phone_display']}</a></b>{ORG['hours']}</span></div>
+        <div class="hero__fact">{ico(I['clock'],20,'#E0B84A')}<span><b>Ответ {ORG['reply']}</b>на обращение по телефону или форме</span></div>
       </div>
     </div>
     <div class="hero__card">
@@ -733,7 +733,7 @@ def build_index():
           <li>Перечень объектов исследования</li>
           <li>Сведения о доступе к объекту</li>
         </ul>
-        <a class="btn btn--outline btn--sm" style="color:#E8D7AD" href="mailto:{ORG['email']}">Написать на {ORG['email']}</a>
+        <a class="btn btn--outline btn--sm" style="color:#F3E2A8" href="mailto:{ORG['email']}">Написать на {ORG['email']}</a>
       </div>
     </div>
   </div>
@@ -942,11 +942,11 @@ def build_experts():
       <h2>Что стоит за подписью эксперта</h2>
     </div>
     <div class="grid grid--3">
-      <article class="card card--dark"><div class="card__icon">{ico(I['shield'],26,'#D6B36A')}</div>
+      <article class="card card--dark"><div class="card__icon">{ico(I['shield'],26,'#F0C85A')}</div>
         <h3>Уголовная ответственность</h3><p>При производстве судебной экспертизы эксперт предупреждается об ответственности за дачу заведомо ложного заключения по ст. 307 УК РФ.</p></article>
-      <article class="card card--dark"><div class="card__icon">{ico(I['doc'],26,'#D6B36A')}</div>
+      <article class="card card--dark"><div class="card__icon">{ico(I['doc'],26,'#F0C85A')}</div>
         <h3>Требования 73-ФЗ</h3><p>Заключение оформляется в соответствии с Федеральным законом № 73-ФЗ «О государственной судебно-экспертной деятельности» и процессуальными кодексами.</p></article>
-      <article class="card card--dark"><div class="card__icon">{ico(I['user'],26,'#D6B36A')}</div>
+      <article class="card card--dark"><div class="card__icon">{ico(I['user'],26,'#F0C85A')}</div>
         <h3>Участие в заседании</h3><p>Эксперт готов явиться в суд, дать пояснения по заключению и ответить на вопросы сторон и суда.</p></article>
     </div>
   </div>

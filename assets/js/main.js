@@ -69,7 +69,7 @@
     var drop = input.closest('.file-drop');
     if (drop) {
       ['dragenter', 'dragover'].forEach(function (ev) {
-        drop.addEventListener(ev, function (e) { e.preventDefault(); drop.style.borderColor = '#B8944D'; });
+        drop.addEventListener(ev, function (e) { e.preventDefault(); drop.style.borderColor = '#E0B84A'; });
       });
       ['dragleave', 'drop'].forEach(function (ev) {
         drop.addEventListener(ev, function (e) { e.preventDefault(); drop.style.borderColor = ''; });
