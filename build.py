@@ -1135,12 +1135,8 @@ def build_contacts():
       </ul>
       <h3 style="margin-top:36px">Как найти офис</h3>
       <p style="color:#5c5a55">Здесь размещается описание входа и ориентиров: с какой стороны здания вход, номер подъезда, этаж, наличие домофона и парковки, ближайшие остановки транспорта.</p>
-      <div class="map-frame" style="margin-top:20px">
-        <div>
-          {ico(I['pin'],32)}
-          <p style="margin:14px 0 6px;font-weight:600">Место для интерактивной карты</p>
-          <p style="font-size:14.5px;color:#6f6b64;margin:0">Вставьте код Яндекс.Карт (конструктор карт) вместо этого блока — в предпросмотре внешние карты не загружаются.</p>
-        </div>
+      <div class="map-frame" style="margin-top:20px;padding:0">
+        <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Af093da51e21984fd81290aa67630c3609dde50bc21c94262246ea01feb6bcae4&source=constructor" width="100%" height="400" frameborder="0" allowfullscreen="true" title="Офис экспертной организации «АЛЬФА» на карте"></iframe>
       </div>
     </div>
     <div id="zayavka">{form('', dark=False, ident='zayavka')}</div>
