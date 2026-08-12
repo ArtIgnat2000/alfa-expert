@@ -327,18 +327,19 @@ def header(base, active):
         <span class="brand__tag">Экспертная организация</span>
       </span>
     </a>
-    <a class="header__phone" href="tel:{ORG['phone_href']}" aria-label="Позвонить по номеру {ORG['phone_display']}">
-      {ico(I['phone'],20,'#F0C85A',1.9)}
-      <span class="header__phone-num">{ORG['phone_display']}</span>
-    </a>
+    <nav class="nav" id="mainnav" aria-label="Основное меню">
+      {nav_items}
+      <a class="btn btn--primary btn--sm nav__cta" href="tel:{ORG['phone_href']}">Позвонить эксперту</a>
+    </nav>
+    <div class="header__end">
+      <a class="header__phone" href="tel:{ORG['phone_href']}" aria-label="Позвонить по номеру {ORG['phone_display']}">
+        {ico(I['phone'],18,'#F0C85A',1.8)}
+        <span class="header__phone-num">{ORG['phone_display']}</span>
+      </a>
+    </div>
     <button class="burger" type="button" aria-expanded="false" aria-controls="mainnav" aria-label="Открыть меню">
       <span></span><span></span><span></span>
     </button>
-    <nav class="nav" id="mainnav" aria-label="Основное меню">
-      {nav_items}
-      <a class="btn btn--primary btn--sm" href="tel:{ORG['phone_href']}">Позвонить эксперту</a>
-    </nav>
-    <a class="btn btn--primary btn--sm header__cta" href="tel:{ORG['phone_href']}">Позвонить эксперту</a>
   </div>
 </header>
 """
