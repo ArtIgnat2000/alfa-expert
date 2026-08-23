@@ -102,16 +102,22 @@ li{margin-bottom:.4em}
 .btn--wide{width:100%}
 
 /* ---------- Шапка ---------- */
-.topbar{background:#0c0c0c;color:#8d8880;font-size:12.5px;letter-spacing:.02em;border-bottom:1px solid rgba(255,255,255,.05)}
-.topbar__in{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:32px}
-.topbar a{color:#b8b3aa;text-decoration:none!important}
-.topbar a:hover{color:#fff}
-.topbar__list{display:flex;gap:28px;align-items:center}
-.topbar__phone{display:inline-flex;align-items:center;gap:8px;padding:2px 0}
-.topbar__phone svg{flex-shrink:0}
-.topbar__phone-label{color:#7a756e}
-.topbar__phone b{color:#f2efe9;font-size:13px;font-weight:500;letter-spacing:.02em}
-.topbar__phone:hover b{color:var(--gold-bright)}
+/* Контакты в строке меню шапки */
+.header__info{display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.header__info-phones{display:flex;align-items:center;gap:16px}
+.header__info-phones a{
+  display:inline-flex;align-items:center;gap:7px;
+  color:#fff;font-size:14.5px;letter-spacing:.02em;
+  text-decoration:none!important;white-space:nowrap;transition:color .18s ease;
+}
+.header__info-phones a svg{flex-shrink:0}
+.header__info-phones a b{font-weight:600}
+.header__info-phones a:hover, .header__info-phones a:hover b{color:var(--gold-bright)}
+.header__info-meta{display:flex;align-items:center;gap:8px;font-size:12px;color:#8d8880;letter-spacing:.02em;white-space:nowrap}
+.header__info-meta i{font-style:normal;color:#55504b}
+.header__info-meta a{color:#b8b3aa;text-decoration:none!important}
+.header__info-meta a:hover{color:#fff}
+.nav__contacts{display:none}
 
 .header{
   position:sticky;top:0;z-index:1000;
@@ -140,18 +146,7 @@ li{margin-bottom:.4em}
 }
 .nav a:hover{color:#fff;background:transparent;text-decoration:none}
 .nav a.is-active{color:var(--gold-bright);box-shadow:none}
-.nav__cta{display:none}
 
-.header__end{display:flex;align-items:center;justify-content:flex-end;gap:18px}
-.header__phone{
-  display:inline-flex;align-items:center;gap:8px;
-  text-decoration:none!important;padding:0;border:0;background:transparent;
-  transition:color .18s ease;
-}
-.header__phone svg{flex-shrink:0}
-.header__phone-num{color:#fff;font-size:14px;font-weight:500;white-space:nowrap;letter-spacing:.02em}
-.header__phone:hover .header__phone-num{color:var(--gold-bright)}
-.header__cta{display:none}
 
 .burger{
   display:none;background:transparent;border:0;
@@ -174,26 +169,22 @@ li{margin-bottom:.4em}
     radial-gradient(900px 420px at 82% 18%,rgba(224,184,74,.16),transparent 65%),
     linear-gradient(180deg,rgba(0,0,0,0) 60%,rgba(0,0,0,.5) 100%);
 }
-.hero__in{position:relative;z-index:2;display:grid;grid-template-columns:1.25fr .85fr;gap:56px;align-items:center}
+.hero__in{position:relative;z-index:2;display:grid;grid-template-columns:1fr;gap:56px;align-items:center;max-width:900px}
 .hero h1{color:#fff;margin-bottom:18px}
 .hero h1 em{font-style:normal;color:var(--gold-bright)}
 .hero__lead{font-size:19px;color:#D5D1C9;max-width:620px;margin-bottom:14px}
 .hero__sub{font-size:16.5px;color:#a9a49b;max-width:620px;margin-bottom:30px}
-.hero__actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px}
+.hero__actions{display:none;gap:14px;flex-wrap:wrap;margin-bottom:30px}
+/* Кнопки «Позвонить эксперту» — только в мобильной версии */
+.btn-call{display:none!important}
 .hero__facts{display:flex;flex-wrap:wrap;gap:14px 34px;padding-top:24px;border-top:1px solid rgba(243,226,168,.2)}
 .hero__fact{display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#c6c2ba;max-width:250px}
 .hero__fact svg{flex-shrink:0;margin-top:2px}
 .hero__fact b{display:block;color:#fff;font-weight:600;font-size:15.5px}
-.hero__card{
-  background:linear-gradient(180deg,#1c1c1c,#151515);
-  border:1px solid rgba(243,226,168,.28);border-radius:6px;padding:30px;
-}
-.hero__card h2{font-size:22px;color:#fff;margin-bottom:6px}
-.hero__card p{font-size:14.5px;color:#a9a49b;margin-bottom:20px}
 
 /* ---------- Полоса статистики ---------- */
 .stats{background:var(--graphite);border-top:1px solid #333;border-bottom:1px solid #333}
-.stats__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#3a3a3a}
+.stats__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#3a3a3a}
 .stat{background:var(--graphite);padding:30px 24px;text-align:center}
 .stat__num{font-family:var(--font-head);font-size:clamp(28px,3.4vw,40px);color:var(--gold-bright);line-height:1;margin-bottom:8px}
 .stat__label{font-size:14.5px;color:#b6b2aa;line-height:1.45}
@@ -391,7 +382,7 @@ table.price td.num{white-space:nowrap;font-weight:600}
 .cta-band__in{display:flex;align-items:center;justify-content:space-between;gap:34px;flex-wrap:wrap}
 .cta-band h2{margin-bottom:8px;color:#fff}
 .cta-band p{color:#b0aca4;margin:0;max-width:640px}
-.cta-band__actions{display:flex;gap:14px;flex-wrap:wrap}
+.cta-band__actions{display:none;gap:14px;flex-wrap:wrap}
 
 /* ---------- Хлебные крошки ---------- */
 .crumbs{font-size:14px;color:#8d8880;padding:16px 0}
@@ -440,12 +431,10 @@ table.price td.num{white-space:nowrap;font-weight:600}
 @media (max-width:940px){
   .header .container{padding:0 18px}
   .header__in{display:flex;gap:10px}
-  .header__end{margin-left:auto}
-  .header__phone-num{display:none}
-  .header__phone{width:44px;height:44px;justify-content:center}
+  .header__info{display:none}
   .burger{display:flex}
   .nav{
-    position:fixed;top:calc(32px + var(--header-h));left:0;right:0;bottom:0;
+    position:fixed;top:var(--header-h);left:0;right:0;bottom:0;
     background:rgba(12,12,12,.98);flex-direction:column;align-items:stretch;
     justify-content:flex-start;gap:0;
     padding:18px 24px 100px;overflow-y:auto;display:none;
@@ -453,13 +442,16 @@ table.price td.num{white-space:nowrap;font-weight:600}
   .nav.is-open{display:flex}
   .nav a{padding:16px 2px;border-bottom:1px solid rgba(255,255,255,.06);font-size:17px;color:rgba(255,255,255,.82)}
   .nav a.is-active{box-shadow:none;color:var(--gold-bright)}
-  .nav__cta{display:inline-flex;margin-top:22px;border-bottom:none;align-self:flex-start}
+  .nav__contacts{display:block;margin-top:18px}
+  .nav__contacts a{font-size:17px}
+  .nav__contacts-phone{color:#fff;font-weight:600}
+  .nav__contacts-mail{color:rgba(255,255,255,.82)}
+  .nav__contacts-hours{display:block;padding:14px 2px 0;font-size:14px;color:#8d8880;border-bottom:none}
   .hero__in{grid-template-columns:1fr;gap:36px}
   .split{grid-template-columns:1fr;gap:32px}
   .grid--4{grid-template-columns:repeat(2,1fr)}
   .steps{grid-template-columns:repeat(2,1fr);gap:22px}
   .footer__grid{grid-template-columns:1fr 1fr;gap:28px}
-  .stats__grid{grid-template-columns:repeat(2,1fr)}
 }
 @media (max-width:760px){
   :root{--header-h:72px}
@@ -471,18 +463,7 @@ table.price td.num{white-space:nowrap;font-weight:600}
   .grid--2,.grid--3,.grid--4{grid-template-columns:1fr}
   .situations{grid-template-columns:1fr}
   .form__row{grid-template-columns:1fr}
-
-  /* Верхняя полоса: телефон с подписью, крупно и во всю ширину */
-  .topbar__in{min-height:0;justify-content:center;padding:0}
-  .topbar__list{gap:0;width:100%}
-  .topbar__list:first-child{display:none}
-  .topbar__hide-sm{display:none}
-  .topbar__phone{
-    width:100%;justify-content:center;gap:9px;padding:11px 8px;
-    background:rgba(224,184,74,.10);border-bottom:1px solid rgba(224,184,74,.22);
-  }
-  .topbar__phone-label{font-size:14px;color:#a9a49b}
-  .topbar__phone b{font-size:17px;color:#fff}
+  .stats__grid{grid-template-columns:repeat(2,1fr)}
 
   .header .container{padding:0 16px}
   .header__in{gap:8px;min-height:var(--header-h)}
@@ -491,19 +472,18 @@ table.price td.num{white-space:nowrap;font-weight:600}
   .brand__name{font-size:17px;letter-spacing:.1em}
   .brand__tag{display:block;font-size:9.5px;letter-spacing:.14em}
   .burger{width:44px;height:44px}
-  .header__phone{width:44px;height:44px}
-  .header__phone svg{width:20px;height:20px}
 
   /* Первый экран */
   .hero{padding:38px 0 42px}
   .hero h1{font-size:31px;line-height:1.2}
   .hero__lead{font-size:17.5px;margin-bottom:12px}
   .hero__sub{font-size:16px;margin-bottom:24px}
-  .hero__actions{gap:11px;margin-bottom:26px}
+  .hero__actions{display:flex;gap:11px;margin-bottom:26px}
   .hero__actions .btn{width:100%;padding:17px 20px;font-size:16.5px}
+  .btn-call{display:inline-flex!important}
+  .cta-band__actions{display:flex}
   .hero__facts{gap:16px;padding-top:20px}
   .hero__fact{max-width:100%;width:100%;font-size:15px}
-  .hero__card{padding:22px 18px}
 
   /* Заголовки и отступы */
   h1{font-size:30px}
@@ -574,9 +554,8 @@ table.price td.num{white-space:nowrap;font-weight:600}
   .brand__logo{height:44px}
   .brand__name{font-size:18px}
   .brand__tag{display:none}
-  .topbar__phone-label{display:none}
   .stats__grid{grid-template-columns:1fr}
-  .header__phone,.burger{width:44px;height:44px}
+  .burger{width:44px;height:44px}
   .header__in{gap:6px}
   .container{padding:0 14px}
   .mobile-bar .btn{font-size:15px}
@@ -585,6 +564,6 @@ table.price td.num{white-space:nowrap;font-weight:600}
   *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 }
 @media print{
-  .header,.topbar,.mobile-bar,.footer,.cta-band{display:none}
+  .header,.mobile-bar,.footer,.cta-band{display:none}
   body{background:#fff;color:#000}
 }

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Генератор статических страниц сайта экспертной организации «АЛЬФА».
+Генератор статических страниц сайта экспертной компании «АЛЬФА».
 Запуск:  python3 build.py     (из каталога site/)
 """
 import os, html, re, datetime
@@ -17,16 +17,16 @@ SITE_URL = os.environ.get("SITE_URL", "").rstrip("/")
 # ────────────────────────────────────────────────────────────────
 ORG = {
     "name": "АЛЬФА",
-    "full": "Экспертная организация «АЛЬФА»",
+    "full": "Экспертная компания «АЛЬФА»",
     "legal": "ООО «АЛЬФА»",  # ЗАМЕНИТЬ
-    "tagline": "Экспертная организация",
-    "phone_display": "+7 (831) 216-05-30",      # ЗАМЕНИТЬ
-    "phone_href": "+78312160530",               # ЗАМЕНИТЬ
-    "phone2_display": "+7 (908) 169-19-11",     # ЗАМЕНИТЬ
-    "phone2_href": "+79081691911",              # ЗАМЕНИТЬ
+    "tagline": "Экспертная компания",
+    "phone_display": "+7 908 169 19 11",
+    "phone_href": "+79081691911",
+    "phone2_display": "+7 831 291 73 83",
+    "phone2_href": "+78312917383",
     "email": "alpha-nnov@mail.ru",             # ЗАМЕНИТЬ
-    "address": "г. Нижний Новгород, ул. Полтавская, д. 24, офис 10",  # ЗАМЕНИТЬ
-    "hours": "Пн–Пт 09:00–18:00, Сб — по договорённости",
+    "address": "г. Нижний Новгород, ул. Полтавская, 22, 5 этаж, офис 506",
+    "hours": "Пн–Пт 09:00–18:00",
     "region": "Нижний Новгород и Нижегородская область",
     "inn": "5260433291",   # ЗАМЕНИТЬ
     "ogrn": "1165275057067",  # ЗАМЕНИТЬ
@@ -36,7 +36,6 @@ ORG = {
 if SITE_URL:
     ORG["site"] = SITE_URL
 
-WA = "https://wa.me/" + ORG["phone2_href"].lstrip("+")
 TG = "https://t.me/"  # ЗАМЕНИТЬ на реальный аккаунт
 
 # ────────────────────────────────────────────────────────────────
@@ -129,25 +128,6 @@ SERVICES = [
   "price":"от 30 000 ₽",
  },
  {
-  "slug":"tovarovedcheskaya",
-  "icon":"box",
-  "title":"Товароведческая экспертиза",
-  "short":"Качество товара, причины дефектов, соответствие заявленным характеристикам.",
-  "tasks":["Наличие и характер недостатков","Производственный или эксплуатационный дефект","Соответствие товара документам и стандартам"],
-  "lead":"Устанавливаем наличие недостатков товара, их характер (производственный или эксплуатационный) и влияние на возможность использования — для споров по защите прав потребителей и поставке.",
-  "questions":[
-    "Имеются ли в товаре недостатки, каков их характер и причина возникновения?",
-    "Являются ли недостатки производственными или возникли в результате нарушения правил эксплуатации?",
-    "Является ли недостаток существенным (неустранимым, повторяющимся)?",
-    "Соответствует ли товар условиям договора, маркировке и требованиям стандартов?",
-    "Какова стоимость устранения недостатков либо величина утраты товарной стоимости?",
-  ],
-  "objects":["Бытовая техника и электроника","Мебель и предметы интерьера","Одежда, обувь, текстиль","Строительные и отделочные материалы","Оборудование и инструмент"],
-  "docs":["Договор, чек, гарантийный талон","Техническая документация и инструкция","Претензия и ответ продавца","Акты сервисных центров","Определение суда — при судебной экспертизе"],
-  "term":"от 7 рабочих дней",
-  "price":"от 10 000 ₽",
- },
- {
   "slug":"finansovo-ekonomicheskaya",
   "icon":"chart",
   "title":"Финансово-экономическая экспертиза и оценка",
@@ -187,40 +167,14 @@ SERVICES = [
  },
 ]
 
-SERVICE_OPTIONS = [s["title"] for s in SERVICES] + ["Другое / затрудняюсь определить"]
-
-EXPERTS = [
- {"initials":"И.П.","name":"Фамилия Имя Отчество","role":"Эксперт-строитель, руководитель направления",
-  "edu":"ННГАСУ, «Промышленное и гражданское строительство»",
-  "exp":"Стаж в строительстве — 00 лет, экспертный стаж — 00 лет",
-  "cert":"Сертификат соответствия судебного эксперта по специальности «Исследование строительных объектов»",
-  "tags":["Строительно-техническая","Оценка ущерба","Рецензирование"]},
- {"initials":"А.С.","name":"Фамилия Имя Отчество","role":"Эксперт-автотехник, оценщик",
-  "edu":"НГТУ им. Р.Е. Алексеева, «Автомобили и автомобильное хозяйство»",
-  "exp":"Экспертный стаж — 00 лет",
-  "cert":"Профессиональная переподготовка по экспертным специальностям 13.1–13.4",
-  "tags":["Автотехническая","Оценка ущерба","Трасология"]},
- {"initials":"Е.В.","name":"Фамилия Имя Отчество","role":"Эксперт-землеустроитель, кадастровый инженер",
-  "edu":"ННГАСУ, «Землеустройство и кадастры»",
-  "exp":"Экспертный стаж — 00 лет",
-  "cert":"Член СРО кадастровых инженеров, реестровый номер 00000",
-  "tags":["Землеустроительная","Раздел участков","Реестровые ошибки"]},
- {"initials":"М.А.","name":"Фамилия Имя Отчество","role":"Эксперт-экономист, оценщик",
-  "edu":"ННГУ им. Н.И. Лобачевского, «Финансы и кредит»",
-  "exp":"Экспертный стаж — 00 лет",
-  "cert":"Член СРО оценщиков, квалификационный аттестат по направлению «Оценка недвижимости»",
-  "tags":["Финансово-экономическая","Оценка","Товароведческая"]},
-]
-
 SITUATIONS = [
  ("Нужно доказать строительные недостатки","uslugi/stroitelno-tehnicheskaya.html"),
  ("Требуется определить стоимость восстановительного ремонта","uslugi/avtotehnicheskaya.html"),
  ("Возник спор после ДТП","uslugi/avtotehnicheskaya.html"),
- ("Нужно проверить качество товара","uslugi/tovarovedcheskaya.html"),
  ("Есть спор о границах земельного участка","uslugi/zemleustroitelnaya.html"),
  ("Требуется оценить размер ущерба","uslugi/finansovo-ekonomicheskaya.html"),
  ("Нужна рецензия на заключение другого эксперта","uslugi/recenzirovanie.html"),
- ("Суд назначил экспертизу и нужна экспертная организация","dlya-yuristov.html"),
+ ("Суд назначил экспертизу и нужна экспертная компания","dlya-yuristov.html"),
  ("Требуется сформулировать вопросы для ходатайства","dlya-yuristov.html"),
 ]
 
@@ -246,8 +200,6 @@ FAQ = [
   "<p>Стоимость зависит от вида исследования, количества и сложности объектов, объёма материалов и поставленных вопросов. Ориентировочные диапазоны приведены в разделе «Стоимость и сроки». Точную сумму мы называем после изучения задачи и перечня документов.</p>"),
  ("Как быстро будет готово заключение?",
   "<p>Типовые сроки — от 5 до 20 рабочих дней с момента получения полного комплекта материалов и доступа к объекту исследования. Срок фиксируется в договоре, для суда — сообщается письмом до назначения экспертизы.</p>"),
- ("Вы даёте гарантию, что заключение примут в суде?",
-  "<p>Нет, и мы не считаем корректными такие обещания: оценка доказательств относится к исключительной компетенции суда. Мы отвечаем за другое — за соблюдение требований Федерального закона № 73-ФЗ и процессуального законодательства, применение проверяемых методик, полноту исследования и обоснованность выводов, а также за готовность эксперта явиться в заседание и дать пояснения.</p>"),
  ("Что нужно, чтобы нас назначили судебными экспертами?",
   "<p>Мы по запросу направляем в суд информационное письмо о возможности проведения экспертизы с указанием сроков, стоимости, ФИО экспертов и приложением документов об их квалификации. Письмо готовится, как правило, в течение одного рабочего дня.</p>"),
  ("Можно ли присутствовать при осмотре?",
@@ -255,7 +207,7 @@ FAQ = [
  ("Работаете ли вы за пределами Нижегородской области?",
   "<p>Да. Основной регион работы — Нижний Новгород и область, при этом мы выезжаем в другие регионы. Командировочные расходы согласовываются отдельно до начала работ.</p>"),
  ("Как передать документы, если я в другом городе?",
-  "<p>Материалы можно направить через форму на сайте, по электронной почте или в мессенджере — для первого обращения достаточно сканов и фотографий. Оригиналы и объекты исследования передаются позднее, если это необходимо.</p>"),
+  "<p>Материалы можно направить по электронной почте или в мессенджере — для первого обращения достаточно сканов и фотографий. Оригиналы и объекты исследования передаются позднее, если это необходимо.</p>"),
 ]
 
 # ────────────────────────────────────────────────────────────────
@@ -264,7 +216,6 @@ FAQ = [
 NAV = [
  ("index.html","О компании","#o-kompanii"),
  ("uslugi/index.html","Услуги",None),
- ("eksperty.html","Эксперты",None),
  ("ceny.html","Стоимость",None),
  ("dlya-yuristov.html","Юристам и судам",None),
  ("kejsy.html","Кейсы",None),
@@ -301,41 +252,33 @@ def header(base, active):
         cls = ' class="is-active"' if href == active else ""
         nav_items += f'<a href="{base}{href}"{cls}>{label}</a>'
     return f"""
-<div class="topbar">
-  <div class="container topbar__in">
-    <div class="topbar__list">
-      <span class="topbar__hide-sm">{ORG['region']} · выезд в регионы</span>
-      <span class="topbar__hide-sm">{ORG['hours']}</span>
-    </div>
-    <div class="topbar__list">
-      <a href="mailto:{ORG['email']}" class="topbar__hide-sm">{ORG['email']}</a>
-      <a class="topbar__phone" href="tel:{ORG['phone_href']}">
-        {ico(I['phone'],17,'#F0C85A',1.8)}
-        <span class="topbar__phone-label">Консультация эксперта:</span>
-        <b>{ORG['phone_display']}</b>
-      </a>
-    </div>
-  </div>
-</div>
-
 <header class="header">
   <div class="container header__in">
     <a class="brand" href="{base}index.html" aria-label="{ORG['full']} — на главную">
-      <img class="brand__logo" src="{base}assets/img/logo-mark.png" alt="Логотип экспертной организации АЛЬФА" width="150" height="97">
+      <img class="brand__logo" src="{base}assets/img/logo-mark.png" alt="Логотип экспертной компании АЛЬФА" width="150" height="97">
       <span class="brand__text">
         <span class="brand__name">АЛЬФА</span>
-        <span class="brand__tag">Экспертная организация</span>
+        <span class="brand__tag">Экспертная компания</span>
       </span>
     </a>
     <nav class="nav" id="mainnav" aria-label="Основное меню">
       {nav_items}
-      <a class="btn btn--primary btn--sm nav__cta" href="tel:{ORG['phone_href']}">Позвонить эксперту</a>
+      <div class="nav__contacts">
+        <a class="nav__contacts-phone" href="tel:{ORG['phone_href']}">{ORG['phone_display']}</a>
+        <a class="nav__contacts-phone" href="tel:{ORG['phone2_href']}">{ORG['phone2_display']}</a>
+        <a class="nav__contacts-mail" href="mailto:{ORG['email']}">{ORG['email']}</a>
+        <span class="nav__contacts-hours">{ORG['hours']}</span>
+      </div>
     </nav>
-    <div class="header__end">
-      <a class="header__phone" href="tel:{ORG['phone_href']}" aria-label="Позвонить по номеру {ORG['phone_display']}">
-        {ico(I['phone'],18,'#F0C85A',1.8)}
-        <span class="header__phone-num">{ORG['phone_display']}</span>
-      </a>
+    <div class="header__info">
+      <div class="header__info-phones">
+        <a href="tel:{ORG['phone_href']}">{ico(I['phone'],15,'#F0C85A',1.8)}<b>{ORG['phone_display']}</b></a>
+        <a href="tel:{ORG['phone2_href']}">{ico(I['phone'],15,'#F0C85A',1.8)}<b>{ORG['phone2_display']}</b></a>
+      </div>
+      <div class="header__info-meta">
+        <span>{ORG['hours']}</span><i>·</i>
+        <a href="mailto:{ORG['email']}">{ORG['email']}</a>
+      </div>
     </div>
     <button class="burger" type="button" aria-expanded="false" aria-controls="mainnav" aria-label="Открыть меню">
       <span></span><span></span><span></span>
@@ -354,8 +297,7 @@ def cta_band(base, title="Опишите ситуацию — свяжемся �
       <p>{text}</p>
     </div>
     <div class="cta-band__actions">
-      <a class="btn btn--primary" href="tel:{ORG['phone_href']}">Позвонить эксперту</a>
-      <a class="btn btn--ghost" href="{base}kontakty.html#zayavka">Связаться с экспертом</a>
+      <a class="btn btn--primary btn-call" href="tel:{ORG['phone_href']}">Позвонить эксперту</a>
     </div>
   </div>
 </section>
@@ -371,9 +313,9 @@ def footer(base):
         <a class="brand" href="{base}index.html">
           <img class="brand__logo" src="{base}assets/img/logo-mark.png" alt="" width="110" height="72">
           <span class="brand__text"><span class="brand__name">АЛЬФА</span>
-          <span class="brand__tag">Экспертная организация</span></span>
+          <span class="brand__tag">Экспертная компания</span></span>
         </a>
-        <p class="footer__about">Судебные и внесудебные экспертизы для судов, адвокатов, организаций и частных лиц. {ORG['region']}, выезд в другие регионы.</p>
+        <p class="footer__about">Судебные и внесудебные экспертизы для судов, адвокатов, организаций и частных лиц.</p>
       </div>
       <div>
         <h4>Экспертизы</h4>
@@ -383,7 +325,6 @@ def footer(base):
         <h4>Разделы</h4>
         <ul>
           <li><a href="{base}index.html">Главная</a></li>
-          <li><a href="{base}eksperty.html">Эксперты</a></li>
           <li><a href="{base}ceny.html">Стоимость и сроки</a></li>
           <li><a href="{base}dlya-yuristov.html">Юристам и судам</a></li>
           <li><a href="{base}kejsy.html">Кейсы</a></li>
@@ -403,7 +344,7 @@ def footer(base):
     </div>
     <p class="disclaimer">Информация на сайте носит справочный характер и не является публичной офертой. Стоимость и сроки определяются после изучения материалов и фиксируются в договоре. Оценка доказательств относится к компетенции суда.</p>
     <div class="footer__bottom">
-      <span>© 2011–2026 {ORG['legal']}. ИНН {ORG['inn']}, ОГРН {ORG['ogrn']}</span>
+      <span>© 2016–2026 {ORG['legal']}. ИНН {ORG['inn']}, ОГРН {ORG['ogrn']}</span>
       <span><a href="{base}politika-konfidencialnosti.html">Политика конфиденциальности</a> · <a href="{base}soglasie.html">Согласие на обработку персональных данных</a></span>
     </div>
   </div>
@@ -413,8 +354,7 @@ def footer(base):
 def mobile_bar(base):
     return f"""
 <div class="mobile-bar">
-  <a class="btn btn--primary" href="tel:{ORG['phone_href']}">Позвонить эксперту</a>
-  <a class="btn btn--ghost btn--icon" href="{WA}" target="_blank" rel="noopener" aria-label="Написать в WhatsApp">{ico(I['wa'],20,'#F3E2A8')}</a>
+  <a class="btn btn--primary btn-call" href="tel:{ORG['phone_href']}">Позвонить эксперту</a>
 </div>
 """
 
@@ -424,65 +364,6 @@ def tail(base, extra_jsonld=""):
 <script src="{base}assets/js/main.js" defer></script>
 </body>
 </html>
-"""
-
-def form(base, dark=False, ident="zayavka", title="Связаться с экспертом",
-         subtitle="Опишите ситуацию и приложите документы — эксперт свяжется с вами, уточнит состав материалов, срок и стоимость."):
-    cls = "form form--dark" if dark else "form"
-    opts = "".join(f'<option value="{html.escape(o)}">{html.escape(o)}</option>' for o in SERVICE_OPTIONS)
-    return f"""
-<form class="{cls}" id="{ident}" novalidate data-form>
-  <h3 style="margin-bottom:6px">{title}</h3>
-  <p style="font-size:15px;{'color:#a9a49b' if dark else 'color:#5c5a55'};margin-bottom:22px">{subtitle}</p>
-  <div class="form__row">
-    <div class="field">
-      <label for="{ident}-name">Имя <span class="req" aria-hidden="true">*</span></label>
-      <input type="text" id="{ident}-name" name="name" autocomplete="name" required aria-required="true" placeholder="Как к вам обращаться">
-      <span class="field__error">Укажите, как к вам обращаться</span>
-    </div>
-    <div class="field">
-      <label for="{ident}-phone">Телефон <span class="req" aria-hidden="true">*</span></label>
-      <input type="tel" id="{ident}-phone" name="phone" autocomplete="tel" required aria-required="true" placeholder="+7 (___) ___-__-__" inputmode="tel">
-      <span class="field__error">Укажите корректный номер телефона</span>
-    </div>
-  </div>
-  <div class="form__row">
-    <div class="field">
-      <label for="{ident}-email">E-mail</label>
-      <input type="email" id="{ident}-email" name="email" autocomplete="email" placeholder="Для отправки расчёта">
-      <span class="field__error">Проверьте адрес электронной почты</span>
-    </div>
-    <div class="field">
-      <label for="{ident}-service">Вид экспертизы</label>
-      <select id="{ident}-service" name="service">
-        <option value="">Не выбрано</option>
-        {opts}
-      </select>
-    </div>
-  </div>
-  <div class="field">
-    <label for="{ident}-msg">Опишите ситуацию <span class="req" aria-hidden="true">*</span></label>
-    <textarea id="{ident}-msg" name="message" required aria-required="true" placeholder="Что произошло, есть ли судебный спор, какие документы имеются, какой результат нужен"></textarea>
-    <span class="field__error">Коротко опишите ситуацию — так расчёт будет точнее</span>
-  </div>
-  <div class="field">
-    <label for="{ident}-files">Документы и фотографии</label>
-    <label class="file-drop" for="{ident}-files">
-      {ico(I['clip'],22)}
-      <div style="margin-top:8px;font-size:15px"><b>Выберите файлы</b> или перетащите их сюда</div>
-      <div style="font-size:13px;{'color:#8d8880' if dark else 'color:#6f6b64'};margin-top:4px">PDF, JPG, PNG, DOC, XLS · до 10 файлов, не более 20 МБ каждый</div>
-      <input type="file" id="{ident}-files" name="files[]" multiple accept=".pdf,.jpg,.jpeg,.png,.heic,.doc,.docx,.xls,.xlsx,.zip" data-files>
-    </label>
-    <div class="file-list" data-file-list></div>
-  </div>
-  <label class="consent">
-    <input type="checkbox" name="consent" required aria-required="true" data-consent>
-    <span>Я ознакомлен(а) с <a href="{base}politika-konfidencialnosti.html" target="_blank">политикой конфиденциальности</a> и даю <a href="{base}soglasie.html" target="_blank">согласие на обработку персональных данных</a>, указанных в форме, в целях подготовки ответа на обращение.</span>
-  </label>
-  <button class="btn btn--primary btn--wide" type="submit">Отправить заявку</button>
-  <p class="field__hint" style="margin-top:12px">Отправляя заявку, вы не берёте на себя обязательств. Ответ — {ORG['reply']}.</p>
-  <div class="form__status" role="status" aria-live="polite" data-status></div>
-</form>
 """
 
 def page(fname, title, desc, body, active=None, jsonld=""):
@@ -524,17 +405,16 @@ def build_index():
           <ul class="card__tasks">{tasks}</ul>
           <div class="card__foot">
             <a class="link-arrow" href="uslugi/{s['slug']}.html">Подробнее</a>
-            <a class="btn btn--outline btn--sm" href="kontakty.html#zayavka">Связаться с экспертом</a>
           </div>
         </article>"""
 
     sit = "".join(f'<a class="situation" href="{h}"><span class="situation__mark">—</span><span>{t}</span></a>' for t, h in SITUATIONS)
 
     steps = [
-      ("Описываете ситуацию","По телефону, в мессенджере или через форму. Уточняем суть спора и желаемый результат."),
+      ("Описываете ситуацию","По телефону или в мессенджере. Уточняем суть спора и желаемый результат."),
       ("Передаёте материалы","Документы, фотографии, определение суда, договоры и другие объекты исследования."),
       ("Получаете расчёт","Согласуем вопросы, объём исследования, срок и стоимость. Заключаем договор."),
-      ("Получаете заключение","Передаём заключение с приложениями. При необходимости эксперт участвует в заседании."),
+      ("Получаете заключение","Передаём заключение с приложениями. При необходимости специалист выходит в суд."),
     ]
     steps_html = "".join(f'<div class="step"><span class="step__num">{i+1}</span><h3>{t}</h3><p>{d}</p></div>'
                          for i,(t,d) in enumerate(steps))
@@ -548,25 +428,6 @@ def build_index():
     trust_html = "".join(f"""<article class="card card--dark">
       <div class="card__icon">{ico(I[k],26,'#F0C85A')}</div><h3>{t}</h3><p>{d}</p></article>""" for k,t,d in trust)
 
-    experts_html = ""
-    for e in EXPERTS[:4]:
-        tags = "".join(f'<span class="tag">{t}</span>' for t in e["tags"])
-        experts_html += f"""
-        <article class="expert">
-          <div class="expert__photo"><span class="expert__initials">{e['initials']}</span>
-            <span class="expert__ph-note">Место для реальной фотографии</span></div>
-          <div class="expert__body">
-            <div class="expert__name">{e['name']}</div>
-            <div class="expert__role">{e['role']}</div>
-            <ul class="expert__list">
-              <li><b>Образование:</b> <span>{e['edu']}</span></li>
-              <li><b>Стаж:</b> <span>{e['exp']}</span></li>
-            </ul>
-            <div class="tags">{tags}</div>
-            <a class="btn btn--outline btn--sm" style="margin-top:auto" href="kontakty.html#zayavka">Задать вопрос эксперту</a>
-          </div>
-        </article>"""
-
     cases_html = "".join(f"""<article class="case">
         <div class="case__meta">{c['meta']}</div><h3>{c['title']}</h3>
         <dl><dt>Задача</dt><dd>{c['task']}</dd>
@@ -578,10 +439,9 @@ def build_index():
 
     faq_html = "".join(f"<details><summary>{q}</summary><div class='faq__body'>{a}</div></details>" for q,a in FAQ[:6])
 
-    stats = [("10 000+","исследований выполнено с 2011 года"),
-             ("6","основных направлений экспертизы"),
-             ("1 день","срок ответа на обращение"),
-             ("52","региона — география выездов")]
+    stats = [("10 лет практики","работаем с 2016"),
+             ("10 000+","заключений"),
+             ("5 рабочих дней","минимальный срок")]
     stats_html = "".join(f'<div class="stat"><div class="stat__num">{n}</div><div class="stat__label">{l}</div></div>' for n,l in stats)
 
     b += f"""
@@ -590,22 +450,17 @@ def build_index():
 <section class="hero">
   <div class="container hero__in">
     <div>
-      <span class="eyebrow">Судебные и внесудебные экспертизы</span>
-      <h1>Экспертные исследования для суда и <em>досудебного урегулирования</em></h1>
-      <p class="hero__lead">Объективные исследования для судов, юристов, организаций и частных лиц.</p>
-      <p class="hero__sub">Помогаем установить фактические обстоятельства спора, оценить ущерб, выявить недостатки и подготовить экспертное заключение на основании документов и исследований.</p>
+      <span class="eyebrow">Судебные экспертизы и досудебные исследования</span>
+      <h1>Судебная экспертиза и независимые исследования для <em>досудебного урегулирования</em></h1>
+      <p class="hero__lead">Экспертиза, на которую можно опереться</p>
+      <p class="hero__sub">Компания «АЛЬФА» проводит судебные и внесудебные экспертизы с 2016 года. Помогаем установить обстоятельства ДТП, определить размер ущерба, выявить недостатки и подготовить обоснованное экспертное заключение для суда или досудебного урегулирования.</p>
       <div class="hero__actions">
-        <a class="btn btn--primary" href="tel:{ORG['phone_href']}">Позвонить эксперту</a>
-        <a class="btn btn--ghost" href="#zayavka">Связаться с экспертом</a>
+        <a class="btn btn--primary btn-call" href="tel:{ORG['phone_href']}">Позвонить эксперту</a>
       </div>
       <div class="hero__facts">
-        <div class="hero__fact">{ico(I['pin'],20,'#E0B84A')}<span><b>{ORG['region']}</b>выезд в другие регионы</span></div>
         <div class="hero__fact">{ico(I['phone'],20,'#E0B84A')}<span><b><a href="tel:{ORG['phone_href']}" style="color:#fff">{ORG['phone_display']}</a></b>{ORG['hours']}</span></div>
-        <div class="hero__fact">{ico(I['clock'],20,'#E0B84A')}<span><b>Ответ {ORG['reply']}</b>на обращение по телефону или форме</span></div>
+        <div class="hero__fact">{ico(I['clock'],20,'#E0B84A')}<span><b>Ответ {ORG['reply']}</b>на обращение по телефону</span></div>
       </div>
-    </div>
-    <div class="hero__card">
-      {form('', dark=True, ident='hero-form', title='Связаться с экспертом', subtitle='Ответим ' + ORG['reply'] + '.')}
     </div>
   </div>
 </section>
@@ -651,23 +506,11 @@ def build_index():
   </div>
 </section>
 
-<section class="section" id="eksperty">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">Команда</span>
-      <h2>Эксперты и квалификация</h2>
-      <p>Заключение подписывает конкретный специалист. Документы об образовании и квалификации предоставляются по запросу и прилагаются к заключению.</p>
-    </div>
-    <div class="grid grid--4">{experts_html}</div>
-    <p style="margin-top:28px"><a class="link-arrow" href="eksperty.html">Подробнее об экспертах и документах</a></p>
-  </div>
-</section>
-
 <section class="section section--dark" id="process">
   <div class="container">
     <div class="section-head">
       <span class="eyebrow">Порядок работы</span>
-      <h2>Как проходит работа</h2>
+      <h2>Досудебное исследование</h2>
       <p>Четыре этапа от первого обращения до готового заключения.</p>
     </div>
     <div class="steps">{steps_html}</div>
@@ -756,20 +599,19 @@ def build_index():
     <div class="section-head">
       <span class="eyebrow">Контакты</span>
       <h2>Свяжитесь с нами</h2>
-      <p>Позвоните, напишите в мессенджер или оставьте заявку — эксперт свяжется с вами {ORG['reply']}.</p>
+      <p>Позвоните или напишите в мессенджер — эксперт свяжется с вами {ORG['reply']}.</p>
     </div>
-    <div class="split" style="align-items:flex-start">
+    <div class="split" style="align-items:flex-start;grid-template-columns:1fr;max-width:860px">
       <div>
         <ul class="contact-list">
           <li>{ico(I['phone'],22)}<div><span class="lbl">Телефон</span><span class="val"><a href="tel:{ORG['phone_href']}">{ORG['phone_display']}</a>, <a href="tel:{ORG['phone2_href']}">{ORG['phone2_display']}</a></span></div></li>
-          <li>{ico(I['wa'],22)}<div><span class="lbl">Мессенджеры</span><span class="val"><a href="{WA}" target="_blank" rel="noopener">WhatsApp</a> · <a href="{TG}" target="_blank" rel="noopener">Telegram</a></span></div></li>
+          <li>{ico(I['wa'],22)}<div><span class="lbl">Мессенджеры</span><span class="val"><a href="{TG}" target="_blank" rel="noopener">Telegram</a></span></div></li>
           <li>{ico(I['mail'],22)}<div><span class="lbl">Почта</span><span class="val"><a href="mailto:{ORG['email']}">{ORG['email']}</a></span></div></li>
           <li>{ico(I['pin'],22)}<div><span class="lbl">Офис</span><span class="val">{ORG['address']}</span></div></li>
           <li>{ico(I['clock'],22)}<div><span class="lbl">Режим работы</span><span class="val">{ORG['hours']}</span></div></li>
         </ul>
         <a class="btn btn--dark" style="margin-top:24px" href="kontakty.html">Схема проезда и карта</a>
       </div>
-      <div>{form('', dark=False, ident='zayavka')}</div>
     </div>
   </div>
 </section>
@@ -778,7 +620,7 @@ def build_index():
 """
     jsonld = f"""<script type="application/ld+json">
 {{"@context":"https://schema.org","@type":"LegalService","name":"{ORG['full']}","alternateName":"{ORG['legal']}",
-"description":"Судебные и внесудебные экспертизы: строительно-техническая, автотехническая, землеустроительная, товароведческая, финансово-экономическая, рецензирование заключений.",
+"description":"Судебные и внесудебные экспертизы: строительно-техническая, автотехническая, землеустроительная, финансово-экономическая, рецензирование заключений.",
 "url":"{ORG['site']}","telephone":"{ORG['phone_href']}","email":"{ORG['email']}","image":"{ORG['site']}/assets/img/logo-full.png",
 "address":{{"@type":"PostalAddress","addressLocality":"Нижний Новгород","addressRegion":"Нижегородская область","addressCountry":"RU","streetAddress":"{ORG['address']}"}},
 "areaServed":"Нижегородская область","openingHours":"Mo-Fr 09:00-18:00","priceRange":"от 10000 RUB"}}
@@ -786,8 +628,8 @@ def build_index():
 <script type="application/ld+json">
 {{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{",".join('{"@type":"Question","name":%s,"acceptedAnswer":{"@type":"Answer","text":%s}}' % (_json(q), _json(re.sub("<[^>]+>","",a))) for q,a in FAQ)}]}}
 </script>"""
-    page("index.html", "Экспертная организация «АЛЬФА» — судебные и внесудебные экспертизы в Нижнем Новгороде",
-         "Строительно-техническая, автотехническая, землеустроительная, товароведческая и финансово-экономическая экспертиза. Рецензии на заключения.",
+    page("index.html", "Экспертная компания «АЛЬФА» — судебные и внесудебные экспертизы в Нижнем Новгороде",
+         "Строительно-техническая, автотехническая, землеустроительная и финансово-экономическая экспертиза. Рецензии на заключения.",
          b, active="index.html", jsonld=jsonld)
 
 def _json(s):
@@ -813,7 +655,7 @@ def build_services():
           </div>
         </article>"""
     body = page_hero("../","Виды экспертиз",
-        "Шесть основных направлений. По каждому — перечень решаемых задач, типовые вопросы эксперту и список документов, которые потребуются.",
+        "Пять основных направлений. По каждому — перечень решаемых задач, типовые вопросы эксперту и список документов, которые потребуются.",
         [("Главная","index.html"),("Услуги",None)])
     body += f"""
 <main id="main">
@@ -826,8 +668,8 @@ def build_services():
   </div>
 </section>
 </main>"""
-    page("uslugi/index.html","Виды экспертиз — экспертная организация «АЛЬФА»",
-         "Строительно-техническая, автотехническая, землеустроительная, товароведческая, финансово-экономическая экспертиза и рецензирование заключений.",
+    page("uslugi/index.html","Виды экспертиз — экспертная компания «АЛЬФА»",
+         "Строительно-техническая, автотехническая, землеустроительная, финансово-экономическая экспертиза и рецензирование заключений.",
          body, active="uslugi/index.html")
 
     # карточки услуг
@@ -841,7 +683,7 @@ def build_services():
         body += f"""
 <main id="main">
 <section class="section">
-  <div class="container split" style="align-items:flex-start;gap:48px">
+  <div class="container" style="max-width:900px">
     <div>
       <h2>Какие вопросы решает экспертиза</h2>
       <p>Формулировки ниже можно использовать при подготовке ходатайства о назначении экспертизы. Точный перечень вопросов согласовывается до начала исследования.</p>
@@ -858,7 +700,7 @@ def build_services():
 
       <h2 style="margin-top:44px">Порядок работы</h2>
       <div class="steps" style="grid-template-columns:1fr 1fr">
-        <div class="step"><span class="step__num">1</span><h3>Описываете ситуацию</h3><p>По телефону или через форму — уточняем суть спора.</p></div>
+        <div class="step"><span class="step__num">1</span><h3>Описываете ситуацию</h3><p>По телефону — уточняем суть спора.</p></div>
         <div class="step"><span class="step__num">2</span><h3>Передаёте материалы</h3><p>Документы, фотографии, определение суда.</p></div>
         <div class="step"><span class="step__num">3</span><h3>Получаете расчёт</h3><p>Согласуем вопросы, объём, срок и стоимость.</p></div>
         <div class="step"><span class="step__num">4</span><h3>Получаете заключение</h3><p>При необходимости эксперт выступает в суде.</p></div>
@@ -873,23 +715,15 @@ def build_services():
           <li><b>Стоимость:</b> <span>{s['price']}</span></li>
           <li><b>Срок:</b> <span>{s['term']}</span></li>
           <li><b>Формат:</b> <span>судебная и внесудебная</span></li>
-          <li><b>Регион:</b> <span>{ORG['region']}, выезд в регионы</span></li>
         </ul>
         <p style="font-size:14.5px">Итоговая стоимость зависит от количества объектов, числа вопросов и необходимости выезда. Согласуем после изучения материалов.</p>
-        <a class="btn btn--primary btn--wide" href="tel:{ORG['phone_href']}">Позвонить эксперту</a>
-        <a class="btn btn--outline btn--wide" style="margin-top:10px" href="../kontakty.html#zayavka">Связаться с экспертом</a>
+        <a class="btn btn--primary btn--wide btn-call" href="tel:{ORG['phone_href']}">Позвонить эксперту</a>
       </div>
       <div class="card" style="margin-top:22px">
         <h3 style="font-size:18px">Другие направления</h3>
         <ul style="font-size:15.5px;padding-left:1.1em">{others}</ul>
       </div>
     </aside>
-  </div>
-</section>
-
-<section class="section section--white">
-  <div class="container" style="max-width:900px">
-    {form('../', dark=False, ident='zayavka', title='Заявка по направлению «'+s['title']+'»')}
   </div>
 </section>
 </main>"""
@@ -900,62 +734,6 @@ def build_services():
 </script>"""
         page(f"uslugi/{s['slug']}.html", f"{s['title']} — «АЛЬФА», Нижний Новгород",
              s["lead"][:180], body, active="uslugi/index.html", jsonld=jsonld)
-
-# ════════════════════════════════════════════════════════════════
-def build_experts():
-    cards = ""
-    for e in EXPERTS:
-        tags = "".join(f'<span class="tag">{t}</span>' for t in e["tags"])
-        cards += f"""
-        <article class="expert">
-          <div class="expert__photo"><span class="expert__initials">{e['initials']}</span>
-            <span class="expert__ph-note">Место для реальной фотографии</span></div>
-          <div class="expert__body">
-            <div class="expert__name">{e['name']}</div>
-            <div class="expert__role">{e['role']}</div>
-            <ul class="expert__list">
-              <li><b>Образование:</b> <span>{e['edu']}</span></li>
-              <li><b>Стаж:</b> <span>{e['exp']}</span></li>
-              <li><b>Документы:</b> <span>{e['cert']}</span></li>
-            </ul>
-            <div class="tags">{tags}</div>
-            <a class="btn btn--outline btn--sm" style="margin-top:auto" href="kontakty.html#zayavka">Задать вопрос эксперту</a>
-          </div>
-        </article>"""
-    body = page_hero("","Эксперты и квалификация",
-        "Заключение подписывает конкретный специалист, а не «организация». Ниже — состав команды, образование, стаж и документы, подтверждающие квалификацию.",
-        [("Главная","index.html"),("Эксперты",None)])
-    body += f"""
-<main id="main">
-<section class="section">
-  <div class="container">
-    <div class="grid grid--4">{cards}</div>
-    <div class="note" style="margin-top:32px">
-      <strong>Перед публикацией:</strong> замените ФИО, фотографии в деловом стиле, реквизиты дипломов, сертификатов и свидетельств СРО на действительные. Публикуйте только те сведения, которые вы можете подтвердить документально по запросу суда или стороны.
-    </div>
-  </div>
-</section>
-
-<section class="section section--dark">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">Ответственность</span>
-      <h2>Что стоит за подписью эксперта</h2>
-    </div>
-    <div class="grid grid--3">
-      <article class="card card--dark"><div class="card__icon">{ico(I['shield'],26,'#F0C85A')}</div>
-        <h3>Уголовная ответственность</h3><p>При производстве судебной экспертизы эксперт предупреждается об ответственности за дачу заведомо ложного заключения по ст. 307 УК РФ.</p></article>
-      <article class="card card--dark"><div class="card__icon">{ico(I['doc'],26,'#F0C85A')}</div>
-        <h3>Требования 73-ФЗ</h3><p>Заключение оформляется в соответствии с Федеральным законом № 73-ФЗ «О государственной судебно-экспертной деятельности» и процессуальными кодексами.</p></article>
-      <article class="card card--dark"><div class="card__icon">{ico(I['user'],26,'#F0C85A')}</div>
-        <h3>Участие в заседании</h3><p>Эксперт готов явиться в суд, дать пояснения по заключению и ответить на вопросы сторон и суда.</p></article>
-    </div>
-  </div>
-</section>
-</main>"""
-    page("eksperty.html","Эксперты — экспертная организация «АЛЬФА»",
-         "Состав экспертов: образование, стаж, специализация и документы о квалификации. Заключение подписывает конкретный специалист.",
-         body, active="eksperty.html")
 
 # ════════════════════════════════════════════════════════════════
 def build_prices():
@@ -1043,46 +821,20 @@ def build_lawyers():
       </ul>
 
       <h2 style="margin-top:44px">Рецензия на заключение оппонента</h2>
-      <p>Проводим научно-методический анализ заключения: проверяем соблюдение требований Федерального закона № 73-ФЗ, применённые методики, полноту исследования, наличие расчётных и логических ошибок. Результат используется для обоснова�основания ходатайства о назначении повторной или дополнительной экспертизы.</p>
+      <p>Проводим научно-методический анализ заключения: проверяем соблюдение требований Федерального закона № 73-ФЗ, применённые методики, полноту исследования, наличие расчётных и логических ошибок. Результат используется для обоснования ходатайства о назначении повторной или дополнительной экспертизы.</p>
       <p><a class="link-arrow" href="uslugi/recenzirovanie.html">Подробнее о рецензировании</a></p>
-
-      <h2 style="margin-top:44px">Участие эксперта в заседании</h2>
-      <p>Эксперт по вызову суда является в заседание, даёт пояснения по заключению и отвечает на вопросы участников процесса. Возможна подготовка письменных пояснений на возражения стороны.</p>
-
-      <div class="note" style="margin-top:32px">
-        <strong>О чём мы не заявляем.</strong> Мы не обещаем, что заключение будет принято судом или что спор будет разрешён в вашу пользу: оценка доказательств — исключительная компетенция суда. Наша ответственность — методически корректное, полное и проверяемое исследование.
-      </div>
     </div>
 
-    <aside>
-      <div class="card" style="position:sticky;top:100px">
-        <h3>Запрос письма в суд</h3>
-        <p>Направьте определение суда, проект вопросов или краткую фабулу — подготовим письмо и расчёт.</p>
-        <ul class="card__tasks">
-          <li>Определение суда или проект вопросов</li>
-          <li>Краткая фабула спора</li>
-          <li>Перечень объектов исследования</li>
-          <li>Сведения о доступе к объекту</li>
-        </ul>
-        <a class="btn btn--primary btn--wide" href="kontakty.html#zayavka">Отправить запрос</a>
-        <a class="btn btn--outline btn--wide" style="margin-top:10px" href="mailto:{ORG['email']}">{ORG['email']}</a>
-        <a class="btn btn--outline btn--wide" style="margin-top:10px" href="tel:{ORG['phone_href']}">{ORG['phone_display']}</a>
-      </div>
-    </aside>
   </div>
 </section>
 </main>"""
-    page("dlya-yuristov.html","Юристам, адвокатам и судам — экспертная организация «АЛЬФА»",
+    page("dlya-yuristov.html","Юристам, адвокатам и судам — экспертная компания «АЛЬФА»",
          "Информационное письмо в суд, помощь в формулировании вопросов, рецензирование заключений, участие эксперта в судебном заседании.",
          body, active="dlya-yuristov.html")
 
 # ════════════════════════════════════════════════════════════════
 def build_cases():
     extra = CASES + [
-     {"meta":"Товароведческая · защита прав потребителей","title":"Недостатки корпусной мебели",
-      "task":"Покупатель заявил о дефектах мебели; продавец ссылался на нарушение правил эксплуатации.",
-      "work":"Осмотр изделия, проверка соответствия сборки технической документации, анализ характера дефектов.",
-      "result":"Установлен производственный характер части недостатков, определена стоимость их устранения."},
      {"meta":"Финансово-экономическая · арбитражный суд","title":"Расчёты по договору подряда",
       "task":"Стороны разошлись в определении размера задолженности по завершённому договору.",
       "work":"Анализ первичных документов, актов КС-2 и КС-3, платёжных поручений, проверка арифметики расчётов.",
@@ -1119,16 +871,16 @@ def build_cases():
 def build_contacts():
     faq_html = "".join(f"<details><summary>{q}</summary><div class='faq__body'>{a}</div></details>" for q,a in FAQ)
     body = page_hero("","Контакты",
-        "Позвоните, напишите в мессенджер или оставьте заявку с документами — эксперт ответит " + ORG["reply"] + ".",
+        "Позвоните или напишите в мессенджер — эксперт ответит " + ORG["reply"] + ".",
         [("Главная","index.html"),("Контакты",None)])
     body += f"""
 <main id="main">
 <section class="section">
-  <div class="container split" style="align-items:flex-start">
+  <div class="container split" style="align-items:flex-start;grid-template-columns:1fr;max-width:860px">
     <div>
       <ul class="contact-list">
         <li>{ico(I['phone'],22)}<div><span class="lbl">Телефоны</span><span class="val"><a href="tel:{ORG['phone_href']}">{ORG['phone_display']}</a><br><a href="tel:{ORG['phone2_href']}">{ORG['phone2_display']}</a></span></div></li>
-        <li>{ico(I['wa'],22)}<div><span class="lbl">Мессенджеры</span><span class="val"><a href="{WA}" target="_blank" rel="noopener">WhatsApp</a> · <a href="{TG}" target="_blank" rel="noopener">Telegram</a></span></div></li>
+        <li>{ico(I['wa'],22)}<div><span class="lbl">Мессенджеры</span><span class="val"><a href="{TG}" target="_blank" rel="noopener">Telegram</a></span></div></li>
         <li>{ico(I['mail'],22)}<div><span class="lbl">Электронная почта</span><span class="val"><a href="mailto:{ORG['email']}">{ORG['email']}</a></span></div></li>
         <li>{ico(I['pin'],22)}<div><span class="lbl">Адрес офиса</span><span class="val">{ORG['address']}</span></div></li>
         <li>{ico(I['clock'],22)}<div><span class="lbl">Режим работы</span><span class="val">{ORG['hours']}</span></div></li>
@@ -1137,10 +889,9 @@ def build_contacts():
       <h3 style="margin-top:36px">Как найти офис</h3>
       <p style="color:#5c5a55">Здесь размещается описание входа и ориентиров: с какой стороны здания вход, номер подъезда, этаж, наличие домофона и парковки, ближайшие остановки транспорта.</p>
       <div class="map-frame" style="margin-top:20px;padding:0">
-        <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Af093da51e21984fd81290aa67630c3609dde50bc21c94262246ea01feb6bcae4&source=constructor" width="100%" height="400" frameborder="0" allowfullscreen="true" title="Офис экспертной организации «АЛЬФА» на карте"></iframe>
+        <iframe src="https://yandex.ru/map-widget/v1/?ll=44.026676%2C56.314925&z=17&pt=44.026676,56.314925,pm2rdm" width="100%" height="400" frameborder="0" allowfullscreen="true" title="Офис экспертной компании «АЛЬФА» на карте"></iframe>
       </div>
     </div>
-    <div id="zayavka">{form('', dark=False, ident='zayavka')}</div>
   </div>
 </section>
 
@@ -1151,8 +902,8 @@ def build_contacts():
   </div>
 </section>
 </main>"""
-    page("kontakty.html","Контакты — экспертная организация «АЛЬФА», Нижний Новгород",
-         "Телефоны, электронная почта, адрес офиса и режим работы. Форма заявки с возможностью приложить документы.",
+    page("kontakty.html","Контакты — экспертная компания «АЛЬФА», Нижний Новгород",
+         "Телефоны, электронная почта, адрес офиса и режим работы.",
          body, active="kontakty.html")
 
 # ════════════════════════════════════════════════════════════════
@@ -1215,7 +966,7 @@ def build_legal():
 </section>
 </main>"""
     page("politika-konfidencialnosti.html","Политика конфиденциальности — «АЛЬФА»",
-         "Порядок обработки и защиты персональных данных пользователей сайта экспертной организации «АЛЬФА».", body)
+         "Порядок обработки и защиты персональных данных пользователей сайта экспертной компании «АЛЬФА».", body)
 
     body2 = page_hero("","Согласие на обработку персональных данных",
         "Текст согласия, которое даёт пользователь при отправке формы на сайте.",
@@ -1254,7 +1005,7 @@ def build_404():
     <ul class="checklist">
       <li>Вернуться на <a href="index.html">главную страницу</a></li>
       <li>Посмотреть <a href="uslugi/index.html">виды экспертиз</a></li>
-      <li>Перейти к <a href="kontakty.html">контактам</a> и оставить заявку</li>
+      <li>Перейти к <a href="kontakty.html">контактам</a> и позвонить нам</li>
       <li>Позвонить нам: <a href="tel:{ORG['phone_href']}">{ORG['phone_display']}</a></li>
     </ul>
     <div class="note" style="margin-top:28px">
@@ -1270,7 +1021,7 @@ def build_404():
 # ════════════════════════════════════════════════════════════════
 def build_extra():
     urls = ["index.html","uslugi/index.html"] + [f"uslugi/{s['slug']}.html" for s in SERVICES] + \
-           ["eksperty.html","ceny.html","dlya-yuristov.html","kejsy.html","kontakty.html",
+           ["ceny.html","dlya-yuristov.html","kejsy.html","kontakty.html",
             "politika-konfidencialnosti.html","soglasie.html"]
     sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
     for u in urls:
@@ -1287,7 +1038,6 @@ def build_extra():
 if __name__ == "__main__":
     build_index()
     build_services()
-    build_experts()
     build_prices()
     build_lawyers()
     build_cases()
