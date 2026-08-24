@@ -20,10 +20,8 @@ ORG = {
     "full": "Экспертная компания «АЛЬФА»",
     "legal": "ООО «АЛЬФА»",  # ЗАМЕНИТЬ
     "tagline": "Экспертная компания",
-    "phone_display": "+7 908 169 19 11",
-    "phone_href": "+79081691911",
-    "phone2_display": "+7 831 291 73 83",
-    "phone2_href": "+78312917383",
+    "phone_display": "8 831 291 73 83",
+    "phone_href": "+78312917383",
     "email": "alpha-nnov@mail.ru",             # ЗАМЕНИТЬ
     "address": "г. Нижний Новгород, ул. Полтавская, 22, 5 этаж, офис 506",
     "hours": "Пн–Пт 09:00–18:00",
@@ -128,6 +126,44 @@ SERVICES = [
   "price":"от 30 000 ₽",
  },
  {
+  "slug":"tovarovedcheskaya",
+  "icon":"box",
+  "title":"Товароведческая экспертиза",
+  "short":"Качество товара, причины дефектов, соответствие заявленным характеристикам.",
+  "tasks":["Наличие и характер недостатков","Производственный или эксплуатационный дефект","Соответствие товара документам и стандартам"],
+  "lead":"Устанавливаем наличие недостатков товара, их характер (производственный или эксплуатационный) и влияние на возможность использования — для споров по защите прав потребителей и поставке.",
+  "questions":[
+    "Имеются ли в товаре недостатки, каков их характер и причина возникновения?",
+    "Являются ли недостатки производственными или возникли в результате нарушения правил эксплуатации?",
+    "Является ли недостаток существенным (неустранимым, повторяющимся)?",
+    "Соответствует ли товар условиям договора, маркировке и требованиям стандартов?",
+    "Какова стоимость устранения недостатков либо величина утраты товарной стоимости?",
+  ],
+  "objects":["Бытовая техника и электроника","Мебель и предметы интерьера","Одежда, обувь, текстиль","Строительные и отделочные материалы","Оборудование и инструмент"],
+  "docs":["Договор, чек, гарантийный талон","Техническая документация и инструкция","Претензия и ответ продавца","Акты сервисных центров","Определение суда — при судебной экспертизе"],
+  "term":"от 7 рабочих дней",
+  "price":"от 10 000 ₽",
+ },
+ {
+  "slug":"pocherkovedcheskaya",
+  "icon":"clip",
+  "title":"Почерковедческая экспертиза",
+  "short":"Подлинность подписи и рукописных записей, давность выполнения документов.",
+  "tasks":["Исполнитель подписи или рукописной записи","Признаки технической подделки подписи","Давность выполнения документа"],
+  "lead":"Проводим почерковедческие исследования: устанавливаем исполнителя подписи или рукописной записи, выявляем признаки подделки и исследуем давность выполнения документа.",
+  "questions":[
+    "Кем выполнена подпись (запись) — указанным в документе лицом или иным?",
+    "Имеются ли признаки технической подделки подписи (дорисовка, копирование, перенесение)?",
+    "Выполнен ли документ (текст, подпись) в заявленный период времени или в иной срок?",
+    "Выполнены ли текст документа и подпись одним лицом или разными?",
+    "Имеются ли признаки агрессивного воздействия на документ (намачивание, термовоздействие)?",
+  ],
+  "objects":["Договоры, расписки, доверенности","Платёжные ведомости, накладные, кассовые документы","Заявления, протоколы, служебные записки","Подписи в бюллетенях и ведомостях"],
+  "docs":["Оригинал спорного документа (обязателен)","Свободные и экспериментальные образцы почерка","Сведения об обстоятельствах составления документа","Определение суда — при судебной экспертизе"],
+  "term":"от 10 рабочих дней",
+  "price":"от 15 000 ₽",
+ },
+ {
   "slug":"finansovo-ekonomicheskaya",
   "icon":"chart",
   "title":"Финансово-экономическая экспертиза и оценка",
@@ -168,14 +204,15 @@ SERVICES = [
 ]
 
 SITUATIONS = [
- ("Нужно доказать строительные недостатки","uslugi/stroitelno-tehnicheskaya.html"),
- ("Требуется определить стоимость восстановительного ремонта","uslugi/avtotehnicheskaya.html"),
- ("Возник спор после ДТП","uslugi/avtotehnicheskaya.html"),
- ("Есть спор о границах земельного участка","uslugi/zemleustroitelnaya.html"),
- ("Требуется оценить размер ущерба","uslugi/finansovo-ekonomicheskaya.html"),
- ("Нужна рецензия на заключение другого эксперта","uslugi/recenzirovanie.html"),
- ("Суд назначил экспертизу и нужна экспертная компания","dlya-yuristov.html"),
- ("Требуется сформулировать вопросы для ходатайства","dlya-yuristov.html"),
+ ("ДТП и споры об аварии","Устанавливаем механизм и обстоятельства ДТП, анализируем повреждения транспортных средств и проверяем соответствие действий участников правилам дорожного движения.","uslugi/avtotehnicheskaya.html"),
+ ("Заливы, трещины, протечки и промерзание","Исследуем последствия заливов и другие повреждения помещений, устанавливаем причины их возникновения и объём причинённого ущерба.","uslugi/stroitelno-tehnicheskaya.html"),
+ ("Определение рыночной стоимости","Оценка движимого и недвижимого имущества.","uslugi/finansovo-ekonomicheskaya.html"),
+ ("Размер ущерба и стоимость ремонта автомобиля","Определяем стоимость восстановительного ремонта, оцениваем повреждения автомобиля и проверяем обоснованность расчётов страховой компании или другой стороны.","uslugi/avtotehnicheskaya.html"),
+ ("Споры о качестве товаров","Определяем наличие и характер недостатков, устанавливаем возможные причины их возникновения и оцениваем затраты на их устранение.","uslugi/tovarovedcheskaya.html"),
+ ("Проверка заключения другого эксперта","Анализируем полноту, обоснованность и соответствие заключения требованиям законодательства и применяемым методикам.","uslugi/recenzirovanie.html"),
+ ("Недостатки строительства и ремонта","Выявляем дефекты, устанавливаем причины их возникновения, определяем объём и стоимость работ, необходимых для устранения недостатков.","uslugi/stroitelno-tehnicheskaya.html"),
+ ("Сомнения в подлинности подписи или рукописного текста","Проводим почерковедческие исследования для установления исполнителя подписи или рукописной записи, а также исследования давности выполнения документа.","uslugi/pocherkovedcheskaya.html"),
+ ("Подготовка вопросов для экспертизы в суде","Помогаем сформулировать корректные вопросы эксперту, определить предмет исследования и подготовить материалы для назначения экспертизы.","dlya-yuristov.html"),
 ]
 
 CASES = [
@@ -265,7 +302,6 @@ def header(base, active):
       {nav_items}
       <div class="nav__contacts">
         <a class="nav__contacts-phone" href="tel:{ORG['phone_href']}">{ORG['phone_display']}</a>
-        <a class="nav__contacts-phone" href="tel:{ORG['phone2_href']}">{ORG['phone2_display']}</a>
         <a class="nav__contacts-mail" href="mailto:{ORG['email']}">{ORG['email']}</a>
         <span class="nav__contacts-hours">{ORG['hours']}</span>
       </div>
@@ -273,7 +309,6 @@ def header(base, active):
     <div class="header__info">
       <div class="header__info-phones">
         <a href="tel:{ORG['phone_href']}">{ico(I['phone'],15,'#F0C85A',1.8)}<b>{ORG['phone_display']}</b></a>
-        <a href="tel:{ORG['phone2_href']}">{ico(I['phone'],15,'#F0C85A',1.8)}<b>{ORG['phone2_display']}</b></a>
       </div>
       <div class="header__info-meta">
         <span>{ORG['hours']}</span><i>·</i>
@@ -335,7 +370,6 @@ def footer(base):
         <h4>Контакты</h4>
         <ul>
           <li><a href="tel:{ORG['phone_href']}">{ORG['phone_display']}</a></li>
-          <li><a href="tel:{ORG['phone2_href']}">{ORG['phone2_display']}</a></li>
           <li><a href="mailto:{ORG['email']}">{ORG['email']}</a></li>
           <li>{ORG['address']}</li>
           <li>{ORG['hours']}</li>
@@ -408,7 +442,7 @@ def build_index():
           </div>
         </article>"""
 
-    sit = "".join(f'<a class="situation" href="{h}"><span class="situation__mark">—</span><span>{t}</span></a>' for t, h in SITUATIONS)
+    sit = "".join(f'<a class="situation" href="{h}"><span class="situation__mark">—</span><span class="situation__body"><b>{t}</b><small>{d}</small></span></a>' for t, d, h in SITUATIONS)
 
     steps = [
       ("Описываете ситуацию","По телефону или в мессенджере. Уточняем суть спора и желаемый результат."),
@@ -467,9 +501,6 @@ def build_index():
 
 <section class="stats">
   <div class="container"><div class="stats__grid">{stats_html}</div></div>
-  <div class="container" style="padding-top:18px;padding-bottom:22px">
-    <p style="font-size:13.5px;color:#8d8880;margin:0">Приведённые показатели подтверждаются внутренними документами организации и предоставляются по запросу. Перед публикацией цифры необходимо привести в соответствие с фактическими данными.</p>
-  </div>
 </section>
 
 <section class="section" id="situacii">
@@ -604,7 +635,7 @@ def build_index():
     <div class="split" style="align-items:flex-start;grid-template-columns:1fr;max-width:860px">
       <div>
         <ul class="contact-list">
-          <li>{ico(I['phone'],22)}<div><span class="lbl">Телефон</span><span class="val"><a href="tel:{ORG['phone_href']}">{ORG['phone_display']}</a>, <a href="tel:{ORG['phone2_href']}">{ORG['phone2_display']}</a></span></div></li>
+          <li>{ico(I['phone'],22)}<div><span class="lbl">Телефон</span><span class="val"><a href="tel:{ORG['phone_href']}">{ORG['phone_display']}</a></span></div></li>
           <li>{ico(I['wa'],22)}<div><span class="lbl">Мессенджеры</span><span class="val"><a href="{TG}" target="_blank" rel="noopener">Telegram</a></span></div></li>
           <li>{ico(I['mail'],22)}<div><span class="lbl">Почта</span><span class="val"><a href="mailto:{ORG['email']}">{ORG['email']}</a></span></div></li>
           <li>{ico(I['pin'],22)}<div><span class="lbl">Офис</span><span class="val">{ORG['address']}</span></div></li>
@@ -620,7 +651,7 @@ def build_index():
 """
     jsonld = f"""<script type="application/ld+json">
 {{"@context":"https://schema.org","@type":"LegalService","name":"{ORG['full']}","alternateName":"{ORG['legal']}",
-"description":"Судебные и внесудебные экспертизы: строительно-техническая, автотехническая, землеустроительная, финансово-экономическая, рецензирование заключений.",
+"description":"Судебные и внесудебные экспертизы: строительно-техническая, автотехническая, землеустроительная, товароведческая, финансово-экономическая, почерковедческая, рецензирование заключений.",
 "url":"{ORG['site']}","telephone":"{ORG['phone_href']}","email":"{ORG['email']}","image":"{ORG['site']}/assets/img/logo-full.png",
 "address":{{"@type":"PostalAddress","addressLocality":"Нижний Новгород","addressRegion":"Нижегородская область","addressCountry":"RU","streetAddress":"{ORG['address']}"}},
 "areaServed":"Нижегородская область","openingHours":"Mo-Fr 09:00-18:00","priceRange":"от 10000 RUB"}}
@@ -629,7 +660,7 @@ def build_index():
 {{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{",".join('{"@type":"Question","name":%s,"acceptedAnswer":{"@type":"Answer","text":%s}}' % (_json(q), _json(re.sub("<[^>]+>","",a))) for q,a in FAQ)}]}}
 </script>"""
     page("index.html", "Экспертная компания «АЛЬФА» — судебные и внесудебные экспертизы в Нижнем Новгороде",
-         "Строительно-техническая, автотехническая, землеустроительная и финансово-экономическая экспертиза. Рецензии на заключения.",
+         "Строительно-техническая, автотехническая, землеустроительная, товароведческая, финансово-экономическая и почерковедческая экспертиза. Рецензии на заключения.",
          b, active="index.html", jsonld=jsonld)
 
 def _json(s):
@@ -655,7 +686,7 @@ def build_services():
           </div>
         </article>"""
     body = page_hero("../","Виды экспертиз",
-        "Пять основных направлений. По каждому — перечень решаемых задач, типовые вопросы эксперту и список документов, которые потребуются.",
+        "Семь основных направлений. По каждому — перечень решаемых задач, типовые вопросы эксперту и список документов, которые потребуются.",
         [("Главная","index.html"),("Услуги",None)])
     body += f"""
 <main id="main">
@@ -683,7 +714,7 @@ def build_services():
         body += f"""
 <main id="main">
 <section class="section">
-  <div class="container" style="max-width:900px">
+  <div class="container split" style="align-items:flex-start;gap:48px">
     <div>
       <h2>Какие вопросы решает экспертиза</h2>
       <p>Формулировки ниже можно использовать при подготовке ходатайства о назначении экспертизы. Точный перечень вопросов согласовывается до начала исследования.</p>
@@ -797,7 +828,7 @@ def build_lawyers():
     body += f"""
 <main id="main">
 <section class="section">
-  <div class="container split" style="align-items:flex-start;gap:48px">
+  <div class="container">
     <div>
       <h2>Информационное письмо в суд</h2>
       <p>По запросу суда или стороны готовим письмо о возможности проведения экспертизы. В письме указываются:</p>
@@ -879,7 +910,7 @@ def build_contacts():
   <div class="container split" style="align-items:flex-start;grid-template-columns:1fr;max-width:860px">
     <div>
       <ul class="contact-list">
-        <li>{ico(I['phone'],22)}<div><span class="lbl">Телефоны</span><span class="val"><a href="tel:{ORG['phone_href']}">{ORG['phone_display']}</a><br><a href="tel:{ORG['phone2_href']}">{ORG['phone2_display']}</a></span></div></li>
+        <li>{ico(I['phone'],22)}<div><span class="lbl">Телефон</span><span class="val"><a href="tel:{ORG['phone_href']}">{ORG['phone_display']}</a></span></div></li>
         <li>{ico(I['wa'],22)}<div><span class="lbl">Мессенджеры</span><span class="val"><a href="{TG}" target="_blank" rel="noopener">Telegram</a></span></div></li>
         <li>{ico(I['mail'],22)}<div><span class="lbl">Электронная почта</span><span class="val"><a href="mailto:{ORG['email']}">{ORG['email']}</a></span></div></li>
         <li>{ico(I['pin'],22)}<div><span class="lbl">Адрес офиса</span><span class="val">{ORG['address']}</span></div></li>

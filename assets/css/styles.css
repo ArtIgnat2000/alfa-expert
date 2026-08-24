@@ -121,9 +121,7 @@ li{margin-bottom:.4em}
 
 .header{
   position:sticky;top:0;z-index:1000;
-  background:rgba(17,17,17,.92);
-  backdrop-filter:saturate(180%) blur(20px);
-  -webkit-backdrop-filter:saturate(180%) blur(20px);
+  background:rgba(17,17,17,.96);
   border-bottom:1px solid rgba(255,255,255,.06);
 }
 .header .container{max-width:1320px;padding:0 36px}
@@ -231,6 +229,9 @@ li{margin-bottom:.4em}
 }
 .situation:hover{background:#FBFAF7;color:#111}
 .situation__mark{color:var(--gold);font-weight:700;flex-shrink:0;line-height:1.5}
+.situation__body b{display:block;font-weight:600;font-size:15.5px;line-height:1.35;color:var(--text)}
+.situation__body small{display:block;margin-top:7px;font-size:13.5px;line-height:1.5;color:#5c5a55;font-weight:400}
+.situation:hover .situation__body b{color:#111}
 
 /* ---------- Процесс ---------- */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;counter-reset:step}
@@ -498,6 +499,7 @@ table.price td.num{white-space:nowrap;font-weight:600}
   .card{padding:22px 20px}
   .situation{padding:18px 16px;font-size:16.5px}
   .stats__grid{grid-template-columns:1fr 1fr}
+  .stats__grid .stat:last-child:nth-child(odd){grid-column:1/-1}
   .stat{padding:22px 14px}
   .stat__num{font-size:29px}
   .stat__label{font-size:13.5px}
