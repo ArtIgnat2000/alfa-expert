@@ -177,8 +177,9 @@ li{margin-bottom:.4em}
 .btn-call{display:none!important}
 .hero__facts{display:flex;flex-wrap:wrap;justify-content:center;gap:14px 34px;padding-top:24px;border-top:1px solid rgba(243,226,168,.2)}
 .hero__fact{display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#c6c2ba;max-width:250px}
+.hero__fact:nth-child(2){max-width:310px}
 .hero__fact svg{flex-shrink:0;margin-top:2px}
-.hero__fact b{display:block;color:#fff;font-weight:600;font-size:15.5px}
+.hero__fact b{display:block;color:#fff;font-weight:600;font-size:15.5px;white-space:nowrap}
 
 /* ---------- Полоса статистики ---------- */
 .stats{background:var(--graphite);border-top:1px solid #333;border-bottom:1px solid #333}
