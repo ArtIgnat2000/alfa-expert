@@ -167,15 +167,15 @@ li{margin-bottom:.4em}
     radial-gradient(900px 420px at 82% 18%,rgba(224,184,74,.16),transparent 65%),
     linear-gradient(180deg,rgba(0,0,0,0) 60%,rgba(0,0,0,.5) 100%);
 }
-.hero__in{position:relative;z-index:2;display:grid;grid-template-columns:1fr;gap:56px;align-items:center;max-width:900px}
+.hero__in{position:relative;z-index:2;display:grid;grid-template-columns:1fr;gap:56px;align-items:center;max-width:900px;text-align:center}
 .hero h1{color:#fff;margin-bottom:18px}
 .hero h1 em{font-style:normal;color:var(--gold-bright)}
-.hero__lead{font-size:19px;color:#D5D1C9;max-width:620px;margin-bottom:14px}
-.hero__sub{font-size:16.5px;color:#a9a49b;max-width:620px;margin-bottom:30px}
+.hero__lead{font-size:19px;color:#D5D1C9;max-width:620px;margin:0 auto 14px}
+.hero__sub{font-size:16.5px;color:#a9a49b;max-width:620px;margin:0 auto 30px}
 .hero__actions{display:none;gap:14px;flex-wrap:wrap;margin-bottom:30px}
 /* Кнопки «Позвонить эксперту» — только в мобильной версии */
 .btn-call{display:none!important}
-.hero__facts{display:flex;flex-wrap:wrap;gap:14px 34px;padding-top:24px;border-top:1px solid rgba(243,226,168,.2)}
+.hero__facts{display:flex;flex-wrap:wrap;justify-content:center;gap:14px 34px;padding-top:24px;border-top:1px solid rgba(243,226,168,.2)}
 .hero__fact{display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#c6c2ba;max-width:250px}
 .hero__fact svg{flex-shrink:0;margin-top:2px}
 .hero__fact b{display:block;color:#fff;font-weight:600;font-size:15.5px}
@@ -476,6 +476,7 @@ table.price td.num{white-space:nowrap;font-weight:600}
 
   /* Первый экран */
   .hero{padding:38px 0 42px}
+  .hero__in{text-align:left}
   .hero h1{font-size:31px;line-height:1.2}
   .hero__lead{font-size:17.5px;margin-bottom:12px}
   .hero__sub{font-size:16px;margin-bottom:24px}
@@ -483,7 +484,7 @@ table.price td.num{white-space:nowrap;font-weight:600}
   .hero__actions .btn{width:100%;padding:17px 20px;font-size:16.5px}
   .btn-call{display:inline-flex!important}
   .cta-band__actions{display:flex}
-  .hero__facts{gap:16px;padding-top:20px}
+  .hero__facts{justify-content:flex-start;gap:16px;padding-top:20px}
   .hero__fact{max-width:100%;width:100%;font-size:15px}
 
   /* Заголовки и отступы */
