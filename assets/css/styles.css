@@ -81,7 +81,7 @@ li{margin-bottom:.4em}
 .section--dark .eyebrow,.section--graphite .eyebrow{color:var(--gold-bright)}
 .section-head{max-width:760px;margin-bottom:44px}
 .section-head--services{max-width:100%;width:100%}
-.section-head--services p{text-wrap:balance;text-align:justify;hyphens:auto}
+.section-head--services p{text-align:left;hyphens:none}
 .section-head--situations{max-width:1000px}
 .section-head--cases,.section-head--trust,.section-head--contacts{max-width:1100px}
 .section-head--pricing{max-width:100%;width:100%;}
