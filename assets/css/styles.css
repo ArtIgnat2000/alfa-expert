@@ -80,8 +80,56 @@ li{margin-bottom:.4em}
 .eyebrow::before{content:"";width:28px;height:1px;background:var(--gold)}
 .section--dark .eyebrow,.section--graphite .eyebrow{color:var(--gold-bright)}
 .section-head{max-width:760px;margin-bottom:44px}
+.section-head--services{max-width:100%;width:100%}
+.section-head--services p{text-wrap:balance;text-align:justify;hyphens:auto}
+.section-head--situations{max-width:1000px}
+.section-head--cases,.section-head--trust,.section-head--contacts{max-width:1100px}
+.section-head--pricing{max-width:100%;width:100%;}
 .section-head p{color:var(--text-muted);font-size:18px;margin-bottom:0}
+.section-head--pricing p{text-align:justify;hyphens:auto}
 .section--dark .section-head p{color:#b6b2aa}
+
+/* Подзаголовок блока ситуаций остаётся одной строкой на десктопе
+   и плавно уменьшается на промежуточных ширинах, без скачка переноса. */
+@media (min-width:761px){
+  .section-head--situations p{
+    white-space:nowrap;
+    font-size:clamp(14px,calc(1.5vw + 2px),18px);
+  }
+  .section-head--trust h2,
+  .section-head--cases h2{
+    white-space:nowrap;
+  }
+  .section-head--trust h2{
+    font-size:clamp(23px,calc(3.3vw - 1.5px),37px);
+  }
+  .section-head--contacts p{
+    white-space:nowrap;
+    font-size:clamp(14px,calc(1.85vw - .4px),18px);
+  }
+  .cta-band h2{
+    white-space:nowrap;
+    font-size:clamp(21.5px,calc(3vw - .9px),35px);
+  }
+}
+
+/* Подпись к кейсам также держим в одну строку на десктопе
+   и широких планшетах, сохраняя комфортный размер шрифта. */
+@media (min-width:900px){
+  .section-head--cases p{
+    white-space:nowrap;
+    font-size:clamp(14.8px,calc(1.77vw - 1.1px),18px);
+  }
+}
+
+/* Длинное пояснение к стоимости использует всю ширину страницы.
+   На широком десктопе оно помещается в одну строку без переполнения. */
+@media (min-width:1050px){
+  .section-head--pricing p{
+    white-space:nowrap;
+    font-size:clamp(12.8px,calc(1.34vw - 1.2px),14.8px);
+  }
+}
 
 /* ---------- Кнопки ---------- */
 .btn{
@@ -307,7 +355,13 @@ table.price td.num{white-space:nowrap;font-weight:600}
 }
 .faq details[open] summary::after{content:"–"}
 .faq summary:hover{color:#B88914}
-.faq__body{padding:0 44px 22px 0;color:var(--text-muted);font-size:16.5px}
+.faq__body{
+  padding:0 44px 22px 0;
+  color:var(--text-muted);
+  font-size:16.5px;
+  text-align:justify;
+  hyphens:auto;
+}
 .faq__body p:last-child{margin-bottom:0}
 
 /* ---------- Блок для юристов ---------- */
@@ -550,6 +604,30 @@ table.price td.num{white-space:nowrap;font-weight:600}
   .mobile-bar{display:flex;padding:9px 12px calc(9px + env(safe-area-inset-bottom))}
   .mobile-bar .btn{padding:15px 8px;font-size:16px}
   .mobile-bar .btn--icon{flex:0 0 56px}
+}
+
+/* Сохраняем тот же однострочный ритм на широких планшетах,
+   где мобильный размер текста иначе даёт скачок переноса. */
+@media (min-width:700px) and (max-width:760px){
+  .section-head--situations p{
+    white-space:nowrap;
+    font-size:clamp(13px,calc(1.5vw + 2px),14px);
+  }
+  .section-head--trust h2,
+  .section-head--cases h2{
+    white-space:nowrap;
+  }
+  .section-head--trust h2{
+    font-size:clamp(22px,calc(3.3vw - 1.5px),24px);
+  }
+  .section-head--contacts p{
+    white-space:nowrap;
+    font-size:clamp(13px,calc(1.85vw - .4px),14px);
+  }
+  .cta-band h2{
+    white-space:nowrap;
+    font-size:clamp(20px,calc(3vw - .9px),22px);
+  }
 }
 
 @media (max-width:400px){
